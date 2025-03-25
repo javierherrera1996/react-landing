@@ -1,3 +1,76 @@
+# Portfolio Personal - Javier Herrera
+
+Este es mi portfolio personal desarrollado con Next.js, TypeScript y Tailwind CSS. Incluye animaciones suaves, diseño responsivo y soporte para múltiples idiomas.
+
+## 🚀 Características
+
+- Diseño moderno y responsivo
+- Animaciones suaves con Framer Motion
+- Soporte para múltiples idiomas (Español/Inglés)
+- Optimizado para SEO
+- Diseño con Tailwind CSS
+- Tipado fuerte con TypeScript
+
+## 🛠️ Tecnologías Utilizadas
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Heroicons
+- Particles-bg
+
+## 📦 Instalación
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/tu-usuario/react-landing.git
+```
+
+2. Instala las dependencias:
+```bash
+cd react-landing
+npm install
+```
+
+3. Ejecuta el servidor de desarrollo:
+```bash
+npm run dev
+```
+
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+
+## 🚀 Despliegue
+
+### GitHub Pages
+
+1. Asegúrate de que tu repositorio esté en GitHub
+2. Ve a Settings > Pages
+3. Selecciona la rama main como fuente
+4. Espera unos minutos para que el sitio esté disponible en `https://tu-usuario.github.io/react-landing`
+
+### Vercel
+
+1. Crea una cuenta en [Vercel](https://vercel.com)
+2. Importa tu repositorio de GitHub
+3. Vercel detectará automáticamente que es un proyecto Next.js
+4. Haz clic en "Deploy"
+
+## 📝 Personalización
+
+1. Modifica el contenido en `src/data/data.tsx`
+2. Ajusta los estilos en los componentes de `src/components`
+3. Actualiza las imágenes en `src/images`
+4. Modifica las traducciones en `src/i18n/translations`
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que te gustaría hacer.
+
 # React JS Resume Website Template
 
 ![ReactJS Resume Website Template](resume-screenshot.jpg?raw=true 'ReactJS Resume Website Template')

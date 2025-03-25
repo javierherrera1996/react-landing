@@ -26,40 +26,53 @@ const ContactValueMap: Record<ContactType, ContactValue> = {
 const Contact: FC = memo(() => {
   const {headerText, description, items} = contact;
   return (
-    <Section className="bg-neutral-800" sectionId={SectionId.Contact}>
-      <div className="flex flex-col gap-y-6">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center">
-          <EnvelopeIcon className="hidden h-16 w-16 text-white md:block" />
-          <h2 className="text-2xl font-bold text-white">{headerText}</h2>
-        </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="order-2 col-span-1 md:order-1 ">
-            <ContactForm />
+    <Section className="bg-gradient-to-b from-neutral-900 to-neutral-800" sectionId={SectionId.Contact}>
+      <div className="flex flex-col gap-y-12">
+        <div className="flex flex-col items-center gap-y-4 text-center">
+          <div className="rounded-full bg-orange-500/10 p-4">
+            <EnvelopeIcon className="h-8 w-8 text-orange-500" />
           </div>
-          <div className="order-1 col-span-1 flex flex-col gap-y-4 md:order-2">
-            <p className="prose leading-6 text-neutral-300">{description}</p>
-            <dl className="flex flex-col space-y-4 text-base text-neutral-500 sm:space-y-2">
+          <h2 className="text-3xl font-bold text-white sm:text-4xl">{headerText}</h2>
+          <p className="max-w-2xl text-lg text-gray-300">{description}</p>
+        </div>
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+          <div className="order-2 col-span-1 md:order-1">
+            <div className="rounded-2xl bg-white/5 p-8 backdrop-blur-sm">
+              <ContactForm />
+            </div>
+          </div>
+          <div className="order-1 col-span-1 flex flex-col gap-y-8 md:order-2">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {items.map(({type, text, href}) => {
                 const {Icon, srLabel} = ContactValueMap[type];
                 return (
-                  <div key={srLabel}>
-                    <dt className="sr-only">{srLabel}</dt>
-                    <dd className="flex items-center">
-                      <a
-                        className={classNames(
-                          '-m-2 flex rounded-md p-2 text-neutral-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500',
-                          {'hover:text-white': href},
-                        )}
-                        href={href}
-                        target="_blank">
-                        <Icon aria-hidden="true" className="h-4 w-4 flex-shrink-0 text-neutral-100 sm:h-5 sm:w-5" />
-                        <span className="ml-3 text-sm sm:text-base">{text}</span>
-                      </a>
-                    </dd>
+                  <div
+                    key={srLabel}
+                    className="group flex items-center gap-x-4 rounded-xl bg-white/5 p-4 transition-all duration-300 hover:bg-white/10">
+                    <div className="rounded-lg bg-orange-500/10 p-2">
+                      <Icon className="h-5 w-5 text-orange-500" />
+                    </div>
+                    <a
+                      className={classNames(
+                        'flex-1 text-sm font-medium text-gray-300 transition-colors duration-300',
+                        {'hover:text-orange-500': href},
+                      )}
+                      href={href}
+                      target="_blank">
+                      {text}
+                    </a>
                   </div>
                 );
               })}
-            </dl>
+            </div>
+            <div className="rounded-2xl bg-white/5 p-6 backdrop-blur-sm">
+              <h3 className="mb-4 text-lg font-semibold text-white">Horario de atención</h3>
+              <p className="text-sm text-gray-400">
+                Lunes a Viernes: 9:00 AM - 6:00 PM<br />
+                Sábados: 9:00 AM - 1:00 PM<br />
+                Domingos: Cerrado
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -67,5 +80,5 @@ const Contact: FC = memo(() => {
   );
 });
 
-Contact.displayName = 'About';
+Contact.displayName = 'Contact';
 export default Contact;

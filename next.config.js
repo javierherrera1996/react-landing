@@ -33,7 +33,11 @@ const nextConfig = {
         hostname: 'source.unsplash.com',
       },
     ],
+    domains: ['images.unsplash.com'],
   },
+  // Configuración para GitHub Pages
+  basePath: process.env.NODE_ENV === 'production' ? '/react-landing' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/react-landing/' : '',
 };
 
 module.exports = nextConfig;
