@@ -1,30 +1,30 @@
-import dynamic from 'next/dynamic';
-import {FC, memo} from 'react';
-
-import Page from '../components/Layout/Page';
-import About from '../components/Sections/About';
-import Contact from '../components/Sections/Contact';
-import Footer from '../components/Sections/Footer';
+import {FC} from 'react';
+import Header from '../components/Sections/Header';
 import Hero from '../components/Sections/Hero';
-import Portfolio from '../components/Sections/Portfolio';
+import About from '../components/Sections/About';
 import Resume from '../components/Sections/Resume';
+import Portfolio from '../components/Sections/Portfolio';
+import Contact from '../components/Sections/Contact';
 import {homepageMeta} from '../data/data';
+import Head from 'next/head';
 
-// eslint-disable-next-line react-memo/require-memo
-const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
-
-const Home: FC = memo(() => {
+const Page: FC = () => {
   return (
-    <Page {...homepageMeta}>
+    <>
+      <Head>
+        <title>{homepageMeta.title}</title>
+        <meta content={homepageMeta.description} name="description" />
+      </Head>
       <Header />
-      <Hero />
-      <About />
-      <Resume />
-      <Portfolio />
-      <Contact />
-      <Footer />
-    </Page>
+      <main>
+        <Hero />
+        <About />
+        <Resume />
+        <Portfolio />
+        <Contact />
+      </main>
+    </>
   );
-});
+};
 
-export default Home;
+export default Page;

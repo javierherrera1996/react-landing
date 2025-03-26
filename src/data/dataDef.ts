@@ -88,8 +88,8 @@ export interface PortfolioItem {
  */
 export interface TimelineItem {
   date: string;
-  location: string;
   title: string;
+  location: string;
   content: JSX.Element;
 }
 

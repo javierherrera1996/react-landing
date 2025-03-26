@@ -1,7 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-import es from './locales/es';
-import en from './locales/en';
-import pt from './locales/pt';
+import {createContext, FC, memo, ReactNode, useContext, useState} from 'react';
+import {translations} from './translations';
 
 type Language = 'es' | 'en' | 'pt';
 
@@ -11,37 +9,40 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const translations = {
-  es,
-  en,
-  pt,
-};
-
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+interface LanguageProviderProps {
+  children: ReactNode;
+}
+
+export const LanguageProvider: FC<LanguageProviderProps> = memo(({children}) => {
   const [language, setLanguage] = useState<Language>('es');
 
   const t = (key: string): string => {
     const keys = key.split('.');
-    let value: any = translations[language];
+    let value: Record<string, unknown> = translations[language];
     
     for (const k of keys) {
-      value = value?.[k];
-      if (value === undefined) return key;
+      if (typeof value === 'object' && value !== null) {
+        value = value[k] as Record<string, unknown>;
+      } else {
+        return key;
+      }
     }
     
-    return value;
+    return typeof value === 'string' ? value : key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{language, setLanguage, t}}>
       {children}
     </LanguageContext.Provider>
   );
-};
+});
 
-export const useLanguage = () => {
+LanguageProvider.displayName = 'LanguageProvider';
+
+export const useLanguage = (): LanguageContextType => {
   const context = useContext(LanguageContext);
   if (context === undefined) {
     throw new Error('useLanguage must be used within a LanguageProvider');

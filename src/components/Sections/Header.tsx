@@ -1,51 +1,61 @@
-import {memo, useCallback, useMemo, useState} from 'react';
+import {FC, memo, useEffect, useState} from 'react';
 import {motion} from 'framer-motion';
 import {SectionId} from '../../data/data';
-import {useNavObserver} from '../../hooks/useNavObserver';
 
-export const headerID = 'headerNav';
+const Header: FC = memo(() => {
+  const [activeSection, setActiveSection] = useState<SectionId | null>(null);
 
-const Header = memo(() => {
-  const [activeSection, setActiveSection] = useState<SectionId>(SectionId.Hero);
-  const navSections = useMemo(
-    () => [SectionId.About, SectionId.Resume, SectionId.Portfolio, SectionId.Contact],
-    [],
-  );
+  useEffect(() => {
+    const sections = Object.values(SectionId);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id as SectionId);
+          }
+        });
+      },
+      {threshold: 0.5}
+    );
 
-  const intersectionHandler = useCallback((section: SectionId | null) => {
-    if (section && section !== activeSection) {
-      setActiveSection(section);
-    }
-  }, [activeSection]);
+    sections.forEach((sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.observe(element);
+      }
+    });
 
-  useNavObserver(navSections.map((section) => `#${section}`).join(','), intersectionHandler);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-transparent"
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm"
+      initial={{y: -100}}
+      animate={{y: 0}}
+      transition={{duration: 0.5}}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex justify-center items-center h-16">
-          <div className="flex space-x-12">
-            {navSections.map((section) => (
+      <nav className="container mx-auto px-4 py-4">
+        <ul className="flex justify-center space-x-12">
+          {Object.values(SectionId).map((sectionId) => (
+            <motion.li key={sectionId}>
               <motion.a
-                key={section}
-                href={`#${section}`}
-                whileHover={{ y: -2 }}
-                className={`text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
-                  activeSection === section ? 'text-blue-400' : 'text-gray-400'
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  activeSection === sectionId
+                    ? 'text-blue-400'
+                    : 'text-gray-400 hover:text-white'
                 }`}
+                href={`#${sectionId}`}
+                whileHover={{scale: 1.1}}
+                whileTap={{scale: 0.95}}
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {sectionId}
               </motion.a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </motion.nav>
+            </motion.li>
+          ))}
+        </ul>
+      </nav>
+    </motion.header>
   );
 });
 

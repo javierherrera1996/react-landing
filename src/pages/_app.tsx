@@ -1,16 +1,13 @@
-import 'tailwindcss/tailwind.css';
-import '../globalStyles.scss';
-
-import type {AppProps} from 'next/app';
-import {memo} from 'react';
+import {AppProps} from 'next/app';
 import {LanguageProvider} from '../i18n/LanguageContext';
+import '../styles/globals.css';
 
-const MyApp = memo(({Component, pageProps}: AppProps): JSX.Element => {
+function MyApp({Component, pageProps}: AppProps) {
   return (
     <LanguageProvider>
       <Component {...pageProps} />
     </LanguageProvider>
   );
-});
+}
 
 export default MyApp;

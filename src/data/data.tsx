@@ -25,7 +25,6 @@ import {
   PortfolioItem,
   SkillGroup,
   Social,
-  TimelineItem,
 } from './dataDef';
 
 export const homepageMeta: HomepageMeta = {
@@ -38,17 +37,13 @@ export const homepageMeta: HomepageMeta = {
   twitterDomain: 'javierherrera1996.github.io',
 };
 
-export const SectionId = {
-  Hero: 'hero',
-  About: 'about',
-  Contact: 'contact',
-  Portfolio: 'portfolio',
-  Resume: 'resume',
-  Skills: 'skills',
-  Stats: 'stats',
-} as const;
-
-export type SectionId = (typeof SectionId)[keyof typeof SectionId];
+export enum SectionId {
+  Hero = 'hero',
+  About = 'about',
+  Resume = 'resume',
+  Portfolio = 'portfolio',
+  Contact = 'contact',
+}
 
 export const heroData: Hero = {
   imageSrc: heroImage,
@@ -145,50 +140,56 @@ export const portfolioItems: PortfolioItem[] = [
   },
 ];
 
-export const education: TimelineItem[] = [
+export const experience = [
   {
-    date: "2023 – Present",
-    location: "University of The Andes, Colombia",
-    title: "Master's Degree in Economics",
-    content: <p>Pursuing advanced studies with a focus on economic theory and its applications in data science.</p>,
+    date: '2023 - Presente',
+    title: 'Data Scientist Senior',
+    location: 'Empresa Actual',
+    content: (
+      <ul>
+        <li>Desarrollo de modelos de machine learning para predicción de demanda</li>
+        <li>Implementación de sistemas de recomendación personalizados</li>
+        <li>Liderazgo técnico en proyectos de IA</li>
+      </ul>
+    ),
   },
   {
-    date: "2015 – 2020",
-    location: "Pontificia Xavierian University, Colombia",
-    title: "Bachelor's Degree in Economics",
-    content: <p>Developed a strong foundation in economics complemented by data analysis techniques.</p>,
+    date: '2021 - 2023',
+    title: 'Data Scientist',
+    location: 'Empresa Anterior',
+    content: (
+      <ul>
+        <li>Análisis de datos y visualización para toma de decisiones</li>
+        <li>Desarrollo de modelos de clasificación y regresión</li>
+        <li>Optimización de procesos de negocio mediante análisis de datos</li>
+      </ul>
+    ),
   },
 ];
 
-export const experience: TimelineItem[] = [
+export const education = [
   {
-    date: "Aug 2021 – Present",
-    location: "Banco Davivienda",
-    title: "Cognitive Analytics Specialist, AI Consultant & AI Agent Developer, Senior Data Scientist",
+    date: '2019 - 2021',
+    title: 'Máster en Ciencia de Datos',
+    location: 'Universidad',
     content: (
-      <p>
-        Led consolidation of roles and integrated data pipelines for text, voice, and conversational agent analysis. Developed AI-driven call analysis systems and prototypes using LangChain and LangGraph, reducing manual review time by 30% and increasing first-contact resolution by 20%.
-      </p>
+      <ul>
+        <li>Especialización en Machine Learning y Deep Learning</li>
+        <li>Proyectos de investigación en NLP</li>
+        <li>Tesis sobre modelos de lenguaje</li>
+      </ul>
     ),
   },
   {
-    date: "Apr 2024 – Present",
-    location: "Universidad Sergio Arboleda",
-    title: "Adjunct Professor & AI Consultant",
+    date: '2015 - 2019',
+    title: 'Grado en Ingeniería Informática',
+    location: 'Universidad',
     content: (
-      <p>
-        Teaching undergraduate courses in Predictive Methods, Marketing Analytics, and Data Analytics while consulting on AI projects.
-      </p>
-    ),
-  },
-  {
-    date: "2019 – 2021",
-    location: "Various Institutions",
-    title: "Data Scientist & Research Assistant",
-    content: (
-      <p>
-        Designed segmentation and demand forecasting models for the retail and healthcare sectors, conducted research on NLP and text mining, and developed interactive dashboards.
-      </p>
+      <ul>
+        <li>Especialización en Inteligencia Artificial</li>
+        <li>Proyectos de desarrollo de software</li>
+        <li>Prácticas en empresas tecnológicas</li>
+      </ul>
     ),
   },
 ];
