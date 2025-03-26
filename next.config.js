@@ -34,10 +34,12 @@ const nextConfig = {
       },
     ],
     domains: ['images.unsplash.com'],
+    unoptimized: true,
   },
   // Configuración para GitHub Pages
   basePath: process.env.NODE_ENV === 'production' ? '/react-landing' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/react-landing/' : '',
+  output: 'export',
 };
 
 module.exports = nextConfig;
