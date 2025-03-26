@@ -1,5 +1,5 @@
-import {FC, memo, useState} from 'react';
 import {motion} from 'framer-motion';
+import {FC, memo, useState} from 'react';
 
 interface ContactFormProps {
   onSubmit: (data: {name: string; email: string; message: string}) => void;
@@ -19,7 +19,7 @@ const ContactForm: FC<ContactFormProps> = memo(({onSubmit}) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {name, value} = e.target;
-    setFormData((prev) => ({...prev, [name]: value}));
+    setFormData(prev => ({...prev, [name]: value}));
   };
 
   return (
@@ -27,8 +27,7 @@ const ContactForm: FC<ContactFormProps> = memo(({onSubmit}) => {
       className="space-y-6"
       initial={{opacity: 0, y: 20}}
       onSubmit={handleSubmit}
-      whileInView={{opacity: 1, y: 0}}
-    >
+      whileInView={{opacity: 1, y: 0}}>
       <div>
         <label className="block text-sm font-medium text-gray-300" htmlFor="name">
           Nombre
@@ -78,8 +77,7 @@ const ContactForm: FC<ContactFormProps> = memo(({onSubmit}) => {
         className="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         type="submit"
         whileHover={{scale: 1.02}}
-        whileTap={{scale: 0.98}}
-      >
+        whileTap={{scale: 0.98}}>
         Enviar Mensaje
       </motion.button>
     </motion.form>

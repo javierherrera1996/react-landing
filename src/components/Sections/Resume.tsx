@@ -1,7 +1,8 @@
-import {FC, memo, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
-import {useLanguage} from '../../i18n/LanguageContext';
+import {FC, memo, useState} from 'react';
+
 import {education, experience, SectionId} from '../../data/data';
+import {useLanguage} from '../../i18n/LanguageContext';
 import Section from '../Layout/Section';
 
 const Resume: FC = memo(() => {
@@ -15,7 +16,7 @@ const Resume: FC = memo(() => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
       y: 0,
     },
@@ -47,34 +48,30 @@ const Resume: FC = memo(() => {
         <motion.div
           className="text-center mb-16"
           initial={{opacity: 0, y: 50}}
-          transition={{duration: 1, ease: "easeOut"}}
+          transition={{duration: 1, ease: 'easeOut'}}
           viewport={{once: true}}
-          whileInView={{opacity: 1, y: 0}}
-        >
-          <motion.h2 
+          whileInView={{opacity: 1, y: 0}}>
+          <motion.h2
             className="text-4xl font-bold text-white mb-4"
             initial={{opacity: 0, y: 30}}
-            transition={{duration: 0.8, ease: "easeOut"}}
-            whileInView={{opacity: 1, y: 0}}
-          >
+            transition={{duration: 0.8, ease: 'easeOut'}}
+            whileInView={{opacity: 1, y: 0}}>
             {t('Resume')}
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-gray-400 max-w-2xl mx-auto"
             initial={{opacity: 0, y: 30}}
-            transition={{delay: 0.3, duration: 0.8, ease: "easeOut"}}
-            whileInView={{opacity: 1, y: 0}}
-          >
+            transition={{delay: 0.3, duration: 0.8, ease: 'easeOut'}}
+            whileInView={{opacity: 1, y: 0}}>
             {t('Algunos registros de mi vida')}
           </motion.p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="flex justify-center mb-12"
           initial={{opacity: 0, y: 30}}
-          transition={{delay: 0.5, duration: 0.8, ease: "easeOut"}}
-          whileInView={{opacity: 1, y: 0}}
-        >
+          transition={{delay: 0.5, duration: 0.8, ease: 'easeOut'}}
+          whileInView={{opacity: 1, y: 0}}>
           <div className="bg-gray-800/50 p-1 rounded-lg flex space-x-2 backdrop-blur-sm shadow-xl">
             <motion.button
               animate={activeTab === 'experience' ? 'active' : 'inactive'}
@@ -84,8 +81,7 @@ const Resume: FC = memo(() => {
                   : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
               }`}
               onClick={() => setActiveTab('experience')}
-              variants={tabVariants}
-            >
+              variants={tabVariants}>
               <motion.span
                 animate={{opacity: activeTab === 'experience' ? 1 : 0}}
                 className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 opacity-0"
@@ -101,8 +97,7 @@ const Resume: FC = memo(() => {
                   : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
               }`}
               onClick={() => setActiveTab('education')}
-              variants={tabVariants}
-            >
+              variants={tabVariants}>
               <motion.span
                 animate={{opacity: activeTab === 'education' ? 1 : 0}}
                 className="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-600 opacity-0"
@@ -121,20 +116,18 @@ const Resume: FC = memo(() => {
               exit={{opacity: 0, x: 50}}
               initial={{opacity: 0, x: -50}}
               key="experience"
-              transition={{duration: 0.5, ease: "easeOut"}}
-            >
+              transition={{duration: 0.5, ease: 'easeOut'}}>
               <div className="space-y-8">
-                {experience.map((exp) => (
+                {experience.map(exp => (
                   <motion.div
                     className="relative pl-8 border-l-2 border-blue-500 group"
                     initial="hidden"
                     key={exp.date}
                     variants={itemVariants}
                     viewport={{once: true}}
-                    whileInView="visible"
-                  >
-                    <motion.div 
-                      animate={hoveredItem === exp.date ? "hover" : "initial"}
+                    whileInView="visible">
+                    <motion.div
+                      animate={hoveredItem === exp.date ? 'hover' : 'initial'}
                       className="absolute -left-[9px] top-0 w-4 h-4 bg-blue-500 rounded-full"
                       transition={{duration: 0.3}}
                       variants={pulseVariants}
@@ -144,8 +137,7 @@ const Resume: FC = memo(() => {
                       onHoverEnd={() => setHoveredItem(null)}
                       onHoverStart={() => setHoveredItem(exp.date)}
                       variants={cardVariants}
-                      whileHover="hover"
-                    >
+                      whileHover="hover">
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                         variants={glowVariants}
@@ -168,20 +160,18 @@ const Resume: FC = memo(() => {
               exit={{opacity: 0, x: 50}}
               initial={{opacity: 0, x: -50}}
               key="education"
-              transition={{duration: 0.5, ease: "easeOut"}}
-            >
+              transition={{duration: 0.5, ease: 'easeOut'}}>
               <div className="space-y-8">
-                {education.map((edu) => (
+                {education.map(edu => (
                   <motion.div
                     className="relative pl-8 border-l-2 border-purple-500 group"
                     initial="hidden"
                     key={edu.date}
                     variants={itemVariants}
                     viewport={{once: true}}
-                    whileInView="visible"
-                  >
-                    <motion.div 
-                      animate={hoveredItem === edu.date ? "hover" : "initial"}
+                    whileInView="visible">
+                    <motion.div
+                      animate={hoveredItem === edu.date ? 'hover' : 'initial'}
                       className="absolute -left-[9px] top-0 w-4 h-4 bg-purple-500 rounded-full"
                       transition={{duration: 0.3}}
                       variants={pulseVariants}
@@ -191,8 +181,7 @@ const Resume: FC = memo(() => {
                       onHoverEnd={() => setHoveredItem(null)}
                       onHoverStart={() => setHoveredItem(edu.date)}
                       variants={cardVariants}
-                      whileHover="hover"
-                    >
+                      whileHover="hover">
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                         variants={glowVariants}
@@ -216,4 +205,4 @@ const Resume: FC = memo(() => {
 });
 
 Resume.displayName = 'Resume';
-export default Resume; 
+export default Resume;

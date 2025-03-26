@@ -1,75 +1,94 @@
-# Portfolio Personal - Javier Herrera
+# Portfolio Personal - React Landing Page
 
-Este es mi portfolio personal desarrollado con Next.js, TypeScript y Tailwind CSS. Incluye animaciones suaves, diseño responsivo y soporte para múltiples idiomas.
+Una landing page moderna y responsive construida con React, Next.js, TypeScript y Tailwind CSS.
 
-## 🚀 Características
+## Características
 
-- Diseño moderno y responsivo
-- Animaciones suaves con Framer Motion
-- Soporte para múltiples idiomas (Español/Inglés)
-- Optimizado para SEO
-- Diseño con Tailwind CSS
-- Tipado fuerte con TypeScript
+- 🌐 Internacionalización (i18n) con soporte para múltiples idiomas
+- 🎨 Diseño moderno y responsive con Tailwind CSS
+- ✨ Animaciones suaves con Framer Motion
+- 🌙 Fondo interactivo con Particles.js
+- 📱 Totalmente adaptable a dispositivos móviles
+- 🚀 Optimizado para SEO
+- 🔧 TypeScript para un código más robusto
+- 📦 Next.js para un rendimiento óptimo
 
-## 🛠️ Tecnologías Utilizadas
+## Requisitos Previos
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Heroicons
-- Particles-bg
+- Node.js 14.0.0 o superior
+- npm o yarn
 
-## 📦 Instalación
+## Instalación
 
-1. Clona el repositorio:
+1. Clonar el repositorio:
 ```bash
 git clone https://github.com/tu-usuario/react-landing.git
-```
-
-2. Instala las dependencias:
-```bash
 cd react-landing
-npm install
 ```
 
-3. Ejecuta el servidor de desarrollo:
+2. Instalar dependencias:
+```bash
+npm install
+# o
+yarn install
+```
+
+3. Iniciar el servidor de desarrollo:
 ```bash
 npm run dev
+# o
+yarn dev
 ```
 
-4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+4. Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
-## 🚀 Despliegue
+## Scripts Disponibles
 
-### GitHub Pages
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Crea una versión optimizada para producción
+- `npm run start` - Inicia el servidor de producción
+- `npm run lint` - Ejecuta el linter
+- `npm run deploy` - Despliega en GitHub Pages
 
-1. Asegúrate de que tu repositorio esté en GitHub
-2. Ve a Settings > Pages
-3. Selecciona la rama main como fuente
-4. Espera unos minutos para que el sitio esté disponible en `https://tu-usuario.github.io/react-landing`
+## Estructura del Proyecto
 
-### Vercel
+```
+react-landing/
+├── public/
+├── src/
+│   ├── components/
+│   ├── data/
+│   ├── hooks/
+│   ├── i18n/
+│   ├── pages/
+│   └── styles/
+├── .gitignore
+├── next.config.js
+├── package.json
+├── README.md
+└── tsconfig.json
+```
 
-1. Crea una cuenta en [Vercel](https://vercel.com)
-2. Importa tu repositorio de GitHub
-3. Vercel detectará automáticamente que es un proyecto Next.js
-4. Haz clic en "Deploy"
+## Personalización
 
-## 📝 Personalización
+1. Editar el contenido en `src/data/data.tsx`
+2. Modificar los estilos en `src/styles/globals.css`
+3. Actualizar las traducciones en `src/i18n/locales/`
 
-1. Modifica el contenido en `src/data/data.tsx`
-2. Ajusta los estilos en los componentes de `src/components`
-3. Actualiza las imágenes en `src/images`
-4. Modifica las traducciones en `src/i18n/translations`
+## Despliegue
 
-## 📄 Licencia
+El proyecto está configurado para desplegarse en GitHub Pages:
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+1. Actualizar el campo `homepage` en `package.json` con tu URL de GitHub Pages
+2. Ejecutar `npm run deploy` o `yarn deploy`
 
-## 🤝 Contribuciones
+También puedes desplegarlo en Vercel con un solo clic:
 
-Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que te gustaría hacer.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/tu-usuario/react-landing)
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
 
 # React JS Resume Website Template
 

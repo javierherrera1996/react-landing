@@ -1,88 +1,124 @@
-import {FC, memo} from 'react';
 import {motion} from 'framer-motion';
-import Image from 'next/image';
+import {FC, memo} from 'react';
+
+import {SectionId} from '../../data/data';
+import {TimelineItem} from '../../data/dataDef';
 import {useLanguage} from '../../i18n/LanguageContext';
-import {SectionId, aboutData} from '../../data/data';
 import Section from '../Layout/Section';
 
 const About: FC = memo(() => {
   const {t} = useLanguage();
-  const {profileImageSrc, description, aboutItems} = aboutData;
+
+  const fadeInUp = {
+    hidden: {opacity: 0, y: 20},
+    visible: {opacity: 1, y: 0},
+  };
+
+  const staggerContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
   return (
-    <Section sectionId={SectionId.About} className="bg-gradient-to-b from-gray-900 to-gray-800 py-20">
+    <Section className="bg-gray-900 py-20" sectionId={SectionId.About}>
       <div className="container mx-auto px-4">
+        <motion.div className="text-center mb-16" initial="hidden" variants={staggerContainer} whileInView="visible">
+          <motion.h2 className="text-4xl font-bold text-white mb-4" variants={fadeInUp}>
+            {t('Sobre Mí')}
+          </motion.h2>
+          <motion.p className="text-gray-400 max-w-2xl mx-auto" variants={fadeInUp}>
+            {t(
+              'Soy un Data Scientist y desarrollador Full Stack con experiencia en el desarrollo de soluciones de IA y aplicaciones web. Me especializo en el procesamiento de lenguaje natural y la creación de sistemas de IA conversacional.',
+            )}
+          </motion.p>
+        </motion.div>
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-        >
-          <div className="relative">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="relative w-64 h-64 mx-auto"
-            >
-              <Image
-                alt="Profile"
-                className="rounded-full object-cover"
-                fill
-                src={profileImageSrc as string}
-              />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20" />
-            </motion.div>
-          </div>
-
-          <div className="space-y-6">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-3xl font-bold text-white mb-4"
-            >
-              {t('about.title')}
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="text-gray-300 leading-relaxed"
-            >
-              {description}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-2 gap-4 mt-8"
-            >
-              {aboutItems.map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 * index }}
-                  viewport={{ once: true }}
-                  className="flex items-center space-x-3 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-800/70 transition-colors duration-300"
-                >
-                  {item.Icon && <item.Icon className="h-5 w-5 text-blue-400" />}
-                  <div>
-                    <p className="text-sm text-gray-400">{item.label}</p>
-                    <p className="text-white font-medium">{item.text}</p>
-                  </div>
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          initial="hidden"
+          variants={staggerContainer}
+          whileInView="visible">
+          <motion.div className="bg-gray-800 p-6 rounded-lg" variants={fadeInUp}>
+            <h3 className="text-2xl font-bold text-white mb-4">{t('Experiencia')}</h3>
+            <div className="space-y-4">
+              {[
+                {
+                  date: '2023 - Presente',
+                  title: 'Data Scientist Senior',
+                  location: 'Empresa Actual',
+                  content: (
+                    <ul>
+                      <li>Desarrollo de modelos de machine learning para predicción de demanda</li>
+                      <li>Implementación de sistemas de recomendación personalizados</li>
+                      <li>Liderazgo técnico en proyectos de IA</li>
+                    </ul>
+                  ),
+                },
+                {
+                  date: '2021 - 2023',
+                  title: 'Data Scientist',
+                  location: 'Empresa Anterior',
+                  content: (
+                    <ul>
+                      <li>Análisis de datos y visualización para toma de decisiones</li>
+                      <li>Desarrollo de modelos de clasificación y regresión</li>
+                      <li>Optimización de procesos de negocio mediante análisis de datos</li>
+                    </ul>
+                  ),
+                },
+              ].map((item: TimelineItem, index) => (
+                <motion.div className="border-l-2 border-blue-500 pl-4" key={index} variants={fadeInUp}>
+                  <div className="text-blue-400 mb-2">{item.date}</div>
+                  <h4 className="text-xl font-semibold text-white mb-1">{item.title}</h4>
+                  <div className="text-gray-400 mb-2">{item.location}</div>
+                  <div className="text-gray-300">{item.content}</div>
                 </motion.div>
               ))}
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
+
+          <motion.div className="bg-gray-800 p-6 rounded-lg" variants={fadeInUp}>
+            <h3 className="text-2xl font-bold text-white mb-4">{t('Educación')}</h3>
+            <div className="space-y-4">
+              {[
+                {
+                  date: '2019 - 2021',
+                  title: 'Máster en Ciencia de Datos',
+                  location: 'Universidad',
+                  content: (
+                    <ul>
+                      <li>Especialización en Machine Learning y Deep Learning</li>
+                      <li>Proyectos de investigación en NLP</li>
+                      <li>Tesis sobre modelos de lenguaje</li>
+                    </ul>
+                  ),
+                },
+                {
+                  date: '2015 - 2019',
+                  title: 'Grado en Ingeniería Informática',
+                  location: 'Universidad',
+                  content: (
+                    <ul>
+                      <li>Especialización en Inteligencia Artificial</li>
+                      <li>Proyectos de desarrollo de software</li>
+                      <li>Prácticas en empresas tecnológicas</li>
+                    </ul>
+                  ),
+                },
+              ].map((item: TimelineItem, index) => (
+                <motion.div className="border-l-2 border-blue-500 pl-4" key={index} variants={fadeInUp}>
+                  <div className="text-blue-400 mb-2">{item.date}</div>
+                  <h4 className="text-xl font-semibold text-white mb-1">{item.title}</h4>
+                  <div className="text-gray-400 mb-2">{item.location}</div>
+                  <div className="text-gray-300">{item.content}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </Section>

@@ -1,4 +1,5 @@
 import {createContext, FC, memo, ReactNode, useContext, useState} from 'react';
+
 import {translations} from './translations';
 
 type Language = 'es' | 'en' | 'pt';
@@ -21,7 +22,7 @@ export const LanguageProvider: FC<LanguageProviderProps> = memo(({children}) => 
   const t = (key: string): string => {
     const keys = key.split('.');
     let value: Record<string, unknown> = translations[language];
-    
+
     for (const k of keys) {
       if (typeof value === 'object' && value !== null) {
         value = value[k] as Record<string, unknown>;
@@ -29,15 +30,11 @@ export const LanguageProvider: FC<LanguageProviderProps> = memo(({children}) => 
         return key;
       }
     }
-    
+
     return typeof value === 'string' ? value : key;
   };
 
-  return (
-    <LanguageContext.Provider value={{language, setLanguage, t}}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={{language, setLanguage, t}}>{children}</LanguageContext.Provider>;
 });
 
 LanguageProvider.displayName = 'LanguageProvider';
@@ -48,4 +45,4 @@ export const useLanguage = (): LanguageContextType => {
     throw new Error('useLanguage must be used within a LanguageProvider');
   }
   return context;
-}; 
+};

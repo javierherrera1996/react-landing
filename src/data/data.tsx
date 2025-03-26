@@ -16,16 +16,7 @@ import TwitterIcon from '../components/Icon/TwitterIcon';
 import heroImage from '../images/header-background.webp';
 import portfolioImage1 from '../images/portfolio/portfolio-1.jpg';
 import profilepic from '../images/profilepic.jpg';
-import {
-  About,
-  ContactSection,
-  ContactType,
-  Hero,
-  HomepageMeta,
-  PortfolioItem,
-  SkillGroup,
-  Social,
-} from './dataDef';
+import {About, ContactSection, ContactType, Hero, HomepageMeta, PortfolioItem, SkillGroup, Social} from './dataDef';
 
 export const homepageMeta: HomepageMeta = {
   title: 'Javier Herrera | Data Scientist & AI Specialist',
@@ -51,13 +42,13 @@ export const heroData: Hero = {
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        Como <strong className="text-stone-100">Data Scientist y Especialista en IA</strong>, ayudo a empresas a 
+        Como <strong className="text-stone-100">Data Scientist y Especialista en IA</strong>, ayudo a empresas a
         transformar sus datos en soluciones inteligentes que impulsan el crecimiento y la innovación.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         Especializado en <strong className="text-stone-100">Procesamiento de Lenguaje Natural</strong> y{' '}
-        <strong className="text-stone-100">IA Conversacional</strong>, desarrollo sistemas que mejoran la 
-        experiencia del cliente y optimizan procesos empresariales.
+        <strong className="text-stone-100">IA Conversacional</strong>, desarrollo sistemas que mejoran la experiencia
+        del cliente y optimizan procesos empresariales.
       </p>
     </>
   ),
@@ -94,39 +85,39 @@ export const skills: SkillGroup[] = [
   {
     name: 'Programming Languages',
     skills: [
-      { name: 'Python', level: 10 },
-      { name: 'R', level: 9 },
-      { name: 'SQL', level: 8 },
+      {name: 'Python', level: 10},
+      {name: 'R', level: 9},
+      {name: 'SQL', level: 8},
     ],
   },
   {
     name: 'AI & ML Frameworks',
     skills: [
-      { name: 'LangChain', level: 8 },
-      { name: 'LangGraph', level: 7 },
-      { name: 'TensorFlow', level: 8 },
-      { name: 'PyTorch', level: 8 },
+      {name: 'LangChain', level: 8},
+      {name: 'LangGraph', level: 7},
+      {name: 'TensorFlow', level: 8},
+      {name: 'PyTorch', level: 8},
     ],
   },
   {
     name: 'Cloud & Big Data',
     skills: [
-      { name: 'GCP', level: 8 },
-      { name: 'Azure', level: 7 },
-      { name: 'AWS', level: 8 },
-      { name: 'Spark/PySpark', level: 7 },
+      {name: 'GCP', level: 8},
+      {name: 'Azure', level: 7},
+      {name: 'AWS', level: 8},
+      {name: 'Spark/PySpark', level: 7},
     ],
   },
   {
     name: 'Tools & Methodologies',
     skills: [
-      { name: 'Data Visualization', level: 8 },
-      { name: 'NLP', level: 8 },
-      { name: 'Web Scraping', level: 7 },
-      { name: 'Predictive Modeling', level: 8 },
-      { name: 'Conversational AI', level: 8 },
-      { name: 'Prompt Engineering', level: 8 },
-      { name: 'Agile & Design Thinking', level: 7 },
+      {name: 'Data Visualization', level: 8},
+      {name: 'NLP', level: 8},
+      {name: 'Web Scraping', level: 7},
+      {name: 'Predictive Modeling', level: 8},
+      {name: 'Conversational AI', level: 8},
+      {name: 'Prompt Engineering', level: 8},
+      {name: 'Agile & Design Thinking', level: 7},
     ],
   },
 ];
@@ -134,7 +125,8 @@ export const skills: SkillGroup[] = [
 export const portfolioItems: PortfolioItem[] = [
   {
     title: 'AI Call Analysis System',
-    description: 'Developed an AI-driven call analysis system leveraging LangChain and LangGraph that reduced manual review time by 30%.',
+    description:
+      'Developed an AI-driven call analysis system leveraging LangChain and LangGraph that reduced manual review time by 30%.',
     url: 'https://javierherrera1996.github.io',
     image: portfolioImage1,
   },
@@ -252,4 +244,4 @@ export const socialLinks: Social[] = [
     Icon: StackOverflowIcon,
     href: 'https://stackoverflow.com/users/javierherrera',
   },
-]; 
+];

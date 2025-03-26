@@ -1,13 +1,17 @@
-import {AppProps} from 'next/app';
-import {LanguageProvider} from '../i18n/LanguageContext';
 import '../styles/globals.css';
 
-function MyApp({Component, pageProps}: AppProps) {
+import type {AppProps} from 'next/app';
+import {FC, memo} from 'react';
+
+import {LanguageProvider} from '../i18n/LanguageContext';
+
+const App: FC<AppProps> = memo(({Component, pageProps}) => {
   return (
     <LanguageProvider>
       <Component {...pageProps} />
     </LanguageProvider>
   );
-}
+});
 
-export default MyApp;
+App.displayName = 'App';
+export default App;
