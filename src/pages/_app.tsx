@@ -1,17 +1,37 @@
 import '../styles/globals.css';
+import React, { useEffect, useState } from 'react';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import Loading from '../components/Loading';
 
-import type {AppProps} from 'next/app';
-import {FC, memo} from 'react';
+import {LanguageProvider} from '../context/LanguageContext';
 
-import {LanguageProvider} from '../i18n/LanguageContext';
+function MyApp({ Component, pageProps }: AppProps) {
+  const [isClient, setIsClient] = useState(false);
 
-const App: FC<AppProps> = memo(({Component, pageProps}) => {
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Muestra un cargador sencillo mientras esperamos la hidratación
+  if (!isClient) {
+    return (
+      <>
+        <Head>
+          <title>Javier Herrera | AI Engineer & LangChain Specialist</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
+        <Loading />
+      </>
+    );
+  }
+
+  // Renderiza la aplicación solo del lado del cliente
   return (
     <LanguageProvider>
       <Component {...pageProps} />
     </LanguageProvider>
   );
-});
+}
 
-App.displayName = 'App';
-export default App;
+export default MyApp;

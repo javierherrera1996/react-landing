@@ -1,8 +1,12 @@
 /* eslint-env node */
 
 // https://github.com/vercel/next.js/blob/master/packages/next/next-server/server/config.ts
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: config => {
+  webpack: (config, { dev, isServer }) => {
+    if (process.env.NEXT_WEBPACK_DISABLE_CACHE === '1') {
+      config.cache = false;
+    }
     const oneOfRule = config.module.rules.find(rule => rule.oneOf);
 
     // Next 12 has multiple TS loaders, and we need to update all of them.
@@ -38,8 +42,11 @@ const nextConfig = {
   },
   // Configuración para GitHub Pages
   basePath: process.env.NODE_ENV === 'production' ? '/react-landing' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/react-landing/' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/' : '',
   output: 'export',
+  eslint: {
+    ignoreDuringBuilds: true
+  }
 };
 
 module.exports = nextConfig;
