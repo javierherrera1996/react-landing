@@ -1,6 +1,6 @@
 import {FC, memo} from 'react';
 
-import { type TimelineItem as TimelineItemType } from '../../../data/dataDef';
+import {type TimelineItem as TimelineItemType} from '../../../data/dataDef';
 
 const TimelineItem: FC<{item: TimelineItemType}> = memo(({item}) => {
   const {title, date, location, content} = item;

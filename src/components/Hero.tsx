@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 const Hero: React.FC = () => {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   return (
     <section className="min-h-screen flex items-center justify-center pt-16">
@@ -19,15 +19,15 @@ const Hero: React.FC = () => {
         </div>
         <div className="flex justify-center gap-4">
           <a
-            href="/assets/resume.pdf"
-            download
             className="px-8 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors"
+            download
+            href="/assets/resume.pdf"
           >
             {t('hero.buttons.download')}
           </a>
           <a
-            href="#contact"
             className="px-8 py-3 border-2 border-white text-white rounded-lg hover:bg-white hover:text-black transition-colors"
+            href="#contact"
           >
             {t('hero.buttons.contact')}
           </a>

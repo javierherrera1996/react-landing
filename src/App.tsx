@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
 import './index.css';
+
+import React, {useState} from 'react';
 
 // Traducciones directas en objetos
 const translations = {
@@ -32,15 +33,15 @@ function App() {
         {/* Call to Action Buttons */}
         <div className="flex gap-4 mb-8">
           <a 
-            href="/resume.pdf" 
+            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" 
             download
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            href="/resume.pdf"
           >
             {t.download}
           </a>
           <a 
-            href="#contact"
             className="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+            href="#contact"
           >
             {t.contact}
           </a>
@@ -49,22 +50,22 @@ function App() {
         {/* Language Switcher */}
         <div className="flex justify-center gap-4 p-4 bg-gray-100 rounded-lg">
           <button 
-            onClick={() => setLanguage('es')}
             className={`px-4 py-2 rounded-lg transition-colors ${
               language === 'es' 
                 ? 'bg-blue-600 text-white' 
                 : 'bg-gray-200 hover:bg-gray-300'
             }`}
+            onClick={() => setLanguage('es')}
           >
             Español
           </button>
           <button 
-            onClick={() => setLanguage('en')}
             className={`px-4 py-2 rounded-lg transition-colors ${
               language === 'en' 
                 ? 'bg-blue-600 text-white' 
                 : 'bg-gray-200 hover:bg-gray-300'
             }`}
+            onClick={() => setLanguage('en')}
           >
             English
           </button>

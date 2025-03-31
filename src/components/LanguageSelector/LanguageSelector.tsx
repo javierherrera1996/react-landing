@@ -1,8 +1,9 @@
 import React from 'react';
-import { useLanguage } from '../../hooks/useLanguage';
+
+import {useLanguage} from '../../hooks/useLanguage';
 
 const LanguageSelector: React.FC = () => {
-  const { changeLanguage, getCurrentLanguage } = useLanguage();
+  const {changeLanguage, getCurrentLanguage} = useLanguage();
   const currentLanguage = getCurrentLanguage();
 
   return (

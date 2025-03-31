@@ -1,9 +1,10 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { SectionId } from '../data/data';
+import {useTranslation} from 'react-i18next';
+
+import {SectionId} from '../data/data';
 
 const About: React.FC = () => {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   
   return (
     <section id={SectionId.About}>

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 const TestLanguage: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
 
   return (
     <div className="p-4 bg-white">
@@ -13,14 +13,14 @@ const TestLanguage: React.FC = () => {
         </div>
         <div className="flex gap-2">
           <button 
-            onClick={() => i18n.changeLanguage('es')}
             className="px-4 py-2 bg-blue-500 text-white"
+            onClick={() => i18n.changeLanguage('es')}
           >
             {t('languages.spanish', 'Español')}
           </button>
           <button 
-            onClick={() => i18n.changeLanguage('en')}
             className="px-4 py-2 bg-blue-500 text-white"
+            onClick={() => i18n.changeLanguage('en')}
           >
             {t('languages.english', 'English')}
           </button>
