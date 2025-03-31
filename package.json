@@ -3,14 +3,15 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "build": "DISABLE_ESLINT_PLUGIN=true NODE_OPTIONS=--max_old_space_size=4096 next build",
+    "build": "NODE_OPTIONS=--max_old_space_size=4096 next build",
     "clean": "rm -rf .next node_modules/.cache",
     "compile": "yarn run -T tsc --build --verbose",
     "dev": "NODE_OPTIONS=--max_old_space_size=4096 next dev",
     "lint": "yarn run -T prettier --write './src/**/*.{js,jsx,json,ts,tsx}' && eslint './src/**/*.{js,jsx,ts,tsx}' --fix --max-warnings=0",
     "start": "next start",
     "sitemap": "yarn next-sitemap",
-    "deploy": "next build && touch out/.nojekyll && gh-pages -d out -t true"
+    "predeploy": "NODE_ENV=production npm run build",
+    "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.16",
