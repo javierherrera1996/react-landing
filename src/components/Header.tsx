@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import {useLanguage} from '../context/LanguageContext';
-import LanguageSelector from './LanguageSelector';
 
 // Componentes dinámicos para evitar problemas de hidratación
 const MotionHeader = dynamic(() => Promise.resolve(motion.header), { ssr: false });
@@ -12,7 +11,7 @@ const MotionLi = dynamic(() => Promise.resolve(motion.li), { ssr: false });
 const MotionA = dynamic(() => Promise.resolve(motion.a), { ssr: false });
 
 const Header: React.FC = () => {
-  const {t} = useLanguage();
+  const {language} = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -29,6 +28,11 @@ const Header: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Menú items con soporte para múltiples idiomas
+  const menuItems = language === 'es' 
+    ? ['Inicio', 'Experiencia', 'Proyectos', 'Contacto']
+    : ['Home', 'Experience', 'Projects', 'Contact'];
 
   return (
     <MotionHeader 
@@ -52,14 +56,14 @@ const Header: React.FC = () => {
           
           <nav className="hidden md:block">
             <ul className="flex space-x-4">
-              {['Inicio', 'Experiencia', 'Proyectos', 'Contacto'].map((item, index) => (
+              {menuItems.map((item, index) => (
                 <MotionLi key={item}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index, duration: 0.5 }}
                 >
                   <MotionA 
-                    href={item === 'Inicio' ? '/' : `#${item.toLowerCase()}`} 
+                    href={index === 0 ? '/' : `#${item.toLowerCase()}`} 
                     className="text-white-safe hover:text-accent"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: 'spring', stiffness: 300 }}
@@ -91,7 +95,7 @@ const Header: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <ul className="py-4 px-6 space-y-3">
-              {['Inicio', 'Experiencia', 'Proyectos', 'Contacto'].map((item, index) => (
+              {menuItems.map((item, index) => (
                 <MotionLi key={item}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -99,7 +103,7 @@ const Header: React.FC = () => {
                   transition={{ duration: 0.2, delay: index * 0.05 }}
                 >
                   <a 
-                    href={item === 'Inicio' ? '/' : `#${item.toLowerCase()}`} 
+                    href={index === 0 ? '/' : `#${item.toLowerCase()}`} 
                     className="text-white-safe hover:text-accent block py-2"
                     onClick={() => setMobileMenuOpen(false)}
                   >

@@ -1,17 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import dynamic from 'next/dynamic';
-import Loading from '../components/Loading';
-import HeroSection from '../components/HeroSection';
-import SkillsSection from '../components/SkillsSection';
-import ExperienceSection from '../components/ExperienceSection';
-import EducationSection from '../components/EducationSection';
-import ProjectsSection from '../components/ProjectsSection';
-import TestimonialSection from '../components/TestimonialSection';
-import CtaSection from '../components/CtaSection';
-import ProfileSection from '../components/ProfileSection';
-import UseCasesSection from '../components/UseCasesSection';
-import BlogPreviewSection from '../components/BlogPreviewSection';
 
 // Importación dinámica de componentes con animaciones
 const HeroSectionDynamic = dynamic(() => import('../components/HeroSection'), {
@@ -34,6 +23,34 @@ const SkillsSectionDynamic = dynamic(() => import('../components/SkillsSection')
 const ExperienceSectionDynamic = dynamic(() => import('../components/ExperienceSection'), {
   ssr: false,
   loading: () => <div className="min-h-[50vh] bg-primary"></div>
+});
+
+const ProfileSection = dynamic(() => import('../components/ProfileSection'), {
+  ssr: false
+});
+
+const UseCasesSection = dynamic(() => import('../components/UseCasesSection'), {
+  ssr: false
+});
+
+const ProjectsSection = dynamic(() => import('../components/ProjectsSection'), {
+  ssr: false
+});
+
+const EducationSection = dynamic(() => import('../components/EducationSection'), {
+  ssr: false
+});
+
+const BlogPreviewSection = dynamic(() => import('../components/BlogPreviewSection'), {
+  ssr: false
+});
+
+const TestimonialSection = dynamic(() => import('../components/TestimonialSection'), {
+  ssr: false
+});
+
+const CtaSection = dynamic(() => import('../components/CtaSection'), {
+  ssr: false
 });
 
 // Datos personalizados basados en tu CV
