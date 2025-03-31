@@ -1,52 +1,44 @@
 import {StaticImageData} from 'next/image';
-import {FC, ForwardRefExoticComponent, SVGProps} from 'react';
+import {FC, ForwardRefExoticComponent, SVGProps, ReactNode} from 'react';
 
 import {IconProps} from '../components/Icon/Icon';
 
 export interface HomepageMeta {
   title: string;
   description: string;
-  ogImageUrl?: string;
-  twitterCardType?: 'summary' | 'summary_large';
-  twitterTitle?: string;
-  twitterSite?: string;
-  twitterCreator?: string;
-  twitterDomain?: string;
-  twitterUrl?: string;
-  twitterDescription?: string;
-  twitterImageUrl?: string;
+  ogImageUrl: string;
+  twitterCardType: string;
+  twitterSite: string;
+  twitterCreator: string;
+  twitterDomain: string;
 }
 
 /**
  * Hero section
  */
 export interface Hero {
-  imageSrc: string;
+  imageSrc: string | StaticImageData;
   name: string;
-  description: JSX.Element;
-  actions: HeroActionItem[];
-}
-
-interface HeroActionItem {
-  href: string;
-  text: string;
-  primary?: boolean;
-  Icon?: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'>>;
+  description: ReactNode;
+  actions: {
+    href: string;
+    text: string;
+    primary?: boolean;
+    Icon?: React.ComponentType<{ className?: string }>;
+  }[];
 }
 
 /**
  * About section
  */
 export interface About {
-  profileImageSrc?: string;
+  profileImageSrc: string | StaticImageData;
   description: string;
-  aboutItems: AboutItem[];
-}
-
-export interface AboutItem {
-  label: string;
-  text: string;
-  Icon?: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'>>;
+  aboutItems: {
+    label: string;
+    text: string;
+    Icon?: React.ComponentType<{ className?: string }>;
+  }[];
 }
 
 /**
@@ -70,7 +62,10 @@ export interface Skill {
 
 export interface SkillGroup {
   name: string;
-  skills: Skill[];
+  skills: {
+    name: string;
+    level: number;
+  }[];
 }
 
 /**
@@ -90,7 +85,7 @@ export interface TimelineItem {
   date: string;
   title: string;
   location: string;
-  content: JSX.Element;
+  content: ReactNode;
 }
 
 /**
@@ -111,9 +106,13 @@ export interface Testimonial {
  * Contact section
  */
 export interface ContactSection {
-  headerText?: string;
+  headerText: string;
   description: string;
-  items: ContactItem[];
+  items: {
+    type: string;
+    text: string;
+    href: string;
+  }[];
 }
 
 export const ContactType = {
@@ -145,6 +144,6 @@ export interface ContactValue {
  */
 export interface Social {
   label: string;
-  Icon: FC<IconProps>;
+  Icon: React.ComponentType<{ className?: string }>;
   href: string;
 }
