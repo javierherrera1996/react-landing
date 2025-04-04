@@ -286,13 +286,8 @@ const HomePage: React.FC = () => {
           },
           {
             platform: "LinkedIn",
-            url: "https://www.linkedin.com/in/javierherrera",
+            url: "https://www.linkedin.com/in/javierherrerab",
             icon: "fab fa-linkedin"
-          },
-          {
-            platform: "Twitter",
-            url: "https://twitter.com/javierherrera",
-            icon: "fab fa-twitter"
           }
         ]}
       />
