@@ -38,10 +38,6 @@ const EducationSection = dynamic(() => import('../components/EducationSection'),
   ssr: false
 });
 
-const CtaSection = dynamic(() => import('../components/CtaSection'), {
-  ssr: false
-});
-
 const ContactSection = dynamic(() => import('../components/ContactSection'), {
   ssr: false
 });

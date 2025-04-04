@@ -55,10 +55,10 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                       <img src={experience.logo} alt={experience.company} className="w-6 h-6" />
                     ) : (
                       <i className={`${
-                        experience.title.toLowerCase().includes('profesor') ? 'fas fa-graduation-cap' :
-                        experience.title.toLowerCase().includes('data scientist') ? 'fas fa-chart-line' :
-                        experience.title.toLowerCase().includes('consultor') ? 'fas fa-user-tie' :
-                        'fas fa-code'
+                        experience.title.toLowerCase().includes('profesor') ? 'fas fa-star' :
+                        experience.title.toLowerCase().includes('data scientist') ? 'fas fa-circle' :
+                        experience.title.toLowerCase().includes('consultor') ? 'fas fa-square' :
+                        'fas fa-diamond'
                       } text-accent`}></i>
                     )}
                   </div>
@@ -160,10 +160,10 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                     <img src={experience.logo} alt={experience.company} className="w-6 h-6" />
                   ) : (
                     <i className={`${
-                      experience.title.toLowerCase().includes('profesor') ? 'fas fa-graduation-cap' :
-                      experience.title.toLowerCase().includes('data scientist') ? 'fas fa-chart-line' :
-                      experience.title.toLowerCase().includes('consultor') ? 'fas fa-user-tie' :
-                      'fas fa-code'
+                      experience.title.toLowerCase().includes('profesor') ? 'fas fa-star' :
+                      experience.title.toLowerCase().includes('data scientist') ? 'fas fa-circle' :
+                      experience.title.toLowerCase().includes('consultor') ? 'fas fa-square' :
+                      'fas fa-diamond'
                     } text-accent`}></i>
                   )}
                 </MotionDiv>
