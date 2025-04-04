@@ -40,10 +40,6 @@ const nextConfig = {
     domains: ['images.unsplash.com'],
     unoptimized: true,
   },
-  // Configuración para GitHub Pages
-  basePath: process.env.NODE_ENV === 'production' ? '/portfolio-javier' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio-javier/' : '',
-  output: 'export',
   eslint: {
     ignoreDuringBuilds: true
   }

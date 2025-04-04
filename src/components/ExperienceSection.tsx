@@ -248,44 +248,27 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                       className="mt-4"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 + 0.9 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 + 0.8 }}
                       viewport={{ once: true }}
                     >
-                      <MotionDiv className="text-sm font-medium text-white-safe mb-2">
-                        Tecnologías:
-                      </MotionDiv>
-                      <MotionDiv className="flex flex-wrap gap-2">
+                      <div className="text-sm font-medium text-white-safe mb-2">Tecnologías:</div>
+                      <div className="flex flex-wrap gap-2">
                         {experience.technologies.map((tech, techIndex) => (
                           <MotionSpan 
                             key={techIndex}
                             className="bg-primary px-3 py-1 rounded-full text-xs border border-neutral-700 text-neutral-300"
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.2, delay: 0.05 * techIndex + index * 0.1 + 1 }}
+                            transition={{ duration: 0.3, delay: 0.1 * techIndex + index * 0.1 + 0.9 }}
                             viewport={{ once: true }}
-                            whileHover={{ 
-                              scale: 1.05, 
-                              backgroundColor: "rgba(79, 209, 197, 0.1)",
-                              borderColor: "rgba(79, 209, 197, 0.5)"
-                            }}
                           >
                             {tech}
                           </MotionSpan>
                         ))}
-                      </MotionDiv>
+                      </div>
                     </MotionDiv>
                   )}
                 </MotionDiv>
-              </MotionDiv>
-            ))}
-          </MotionDiv>
-        </MotionDiv>
-      </div>
-    </section>
-  );
-};
-
-export default ExperienceSection; 
               </MotionDiv>
             ))}
           </MotionDiv>
