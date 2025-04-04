@@ -286,3 +286,13 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
 };
 
 export default ExperienceSection; 
+              </MotionDiv>
+            ))}
+          </MotionDiv>
+        </MotionDiv>
+      </div>
+    </section>
+  );
+};
+
+export default ExperienceSection; 
