@@ -6,9 +6,9 @@
     "contact": "Contacto"
   },
   "hero": {
-    "title": "Transformando Datos en Soluciones Inteligentes",
-    "description1": "Como Data Scientist y Especialista en IA, ayudo a empresas a transformar sus datos en soluciones inteligentes que impulsan el crecimiento y la innovación.",
-    "description2": "Especializado en Procesamiento de Lenguaje Natural y IA Conversacional, desarrollo sistemas que mejoran la experiencia del cliente y optimizan procesos empresariales.",
+    "title": "AI Agent Developer & Data Scientist | Especialista en LangChain y LangGraph",
+    "description1": "Como AI Agent Developer y Data Scientist, ayudo a empresas a transformar sus datos en soluciones inteligentes que impulsan el crecimiento y la innovación.",
+    "description2": "Especializado en LangChain y LangGraph, desarrollo sistemas que mejoran la experiencia del cliente y optimizan procesos empresariales mediante la implementación de agentes inteligentes y soluciones de IA avanzadas.",
     "buttons": {
       "download": "Descargar CV",
       "contact": "Contactar"
@@ -17,10 +17,9 @@
   "about": {
     "title": "Sobre mí",
     "location": "Ubicación",
-    "age": "Edad",
-    "nationality": "Nacionalidad",
-    "interests": "Intereses",
-    "study": "Estudios",
-    "employment": "Empleo"
+    "email": "Email",
+    "phone": "Teléfono",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   }
 } 

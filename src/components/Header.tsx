@@ -31,8 +31,8 @@ const Header: React.FC = () => {
 
   // Menú items con soporte para múltiples idiomas
   const menuItems = language === 'es' 
-    ? ['Inicio', 'Experiencia', 'Proyectos', 'Contacto']
-    : ['Home', 'Experience', 'Projects', 'Contact'];
+    ? ['Inicio', 'Experiencia', 'Contacto']
+    : ['Home', 'Experience', 'Contact'];
 
   return (
     <MotionHeader 

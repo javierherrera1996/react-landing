@@ -6,6 +6,10 @@ import {
   FlagIcon,
   MapIcon,
   SparklesIcon,
+  EnvelopeIcon,
+  PhoneIcon,
+  LinkIcon,
+  CodeBracketIcon,
 } from '@heroicons/react/24/outline';
 
 import GithubIcon from '../components/Icon/GithubIcon';
@@ -38,17 +42,16 @@ export enum SectionId {
 
 export const heroData: Hero = {
   imageSrc: heroImage,
-  name: `Transformando Datos en Soluciones Inteligentes`,
+  name: `AI Agent Developer & Data Scientist | Especialista en LangChain y LangGraph`,
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        Como <strong className="text-stone-100">Data Scientist y Especialista en IA</strong>, ayudo a empresas a
+        Como <strong className="text-stone-100">AI Agent Developer y Data Scientist</strong>, ayudo a empresas a
         transformar sus datos en soluciones inteligentes que impulsan el crecimiento y la innovación.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        Especializado en <strong className="text-stone-100">Procesamiento de Lenguaje Natural</strong> y{' '}
-        <strong className="text-stone-100">IA Conversacional</strong>, desarrollo sistemas que mejoran la experiencia
-        del cliente y optimizan procesos empresariales.
+        Especializado en <strong className="text-stone-100">LangChain y LangGraph</strong>, desarrollo sistemas que mejoran la experiencia
+        del cliente y optimizan procesos empresariales mediante la implementación de agentes inteligentes y soluciones de IA avanzadas.
       </p>
     </>
   ),
@@ -69,15 +72,13 @@ export const heroData: Hero = {
 
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `I am a Data Scientist and AI Specialist with expertise in Natural Language Processing and Conversational AI. 
-  I have worked on various projects involving text analysis, voice analysis, and AI-driven solutions.`,
+  description: `AI Agent Developer y Data Scientist especializado en el desarrollo de soluciones de Inteligencia Artificial utilizando frameworks de vanguardia como LangChain y LangGraph. Con más de 5 años de experiencia en la implementación de sistemas de IA para finanzas, salud y seguros. Mi enfoque se centra en la creación de agentes inteligentes que automatizan procesos complejos y mejoran la experiencia del cliente. Combino conocimientos técnicos avanzados con una profunda comprensión de las necesidades empresariales para entregar soluciones de IA que generan valor tangible y medible.`,
   aboutItems: [
     {label: 'Location', text: 'Colombia', Icon: MapIcon},
-    {label: 'Age', text: '27', Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Colombian', Icon: FlagIcon},
-    {label: 'Interests', text: 'Muay Thai, Music, Travel', Icon: SparklesIcon},
-    {label: 'Study', text: 'University of The Andes', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Banco Davivienda', Icon: BuildingOffice2Icon},
+    {label: 'Email', text: 'andreshebe96@gmail.com', Icon: EnvelopeIcon},
+    {label: 'Phone', text: '+57 301 610 3759', Icon: PhoneIcon},
+    {label: 'LinkedIn', text: 'javierherrerab', Icon: LinkIcon},
+    {label: 'GitHub', text: 'javierherrera1996', Icon: CodeBracketIcon},
   ],
 };
 
@@ -192,8 +193,8 @@ export const contact: ContactSection = {
   items: [
     {
       type: ContactType.Email,
-      text: 'javier.herrera@example.com',
-      href: 'mailto:javier.herrera@example.com',
+      text: 'andeshebe96@gmail.com',
+      href: 'mailto:andeshebe96@gmail.com',
     },
     {
       type: ContactType.Location,
@@ -213,7 +214,7 @@ export const contact: ContactSection = {
     {
       type: ContactType.Twitter,
       text: '@javierherrera',
-      href: 'https://twitter.com/javierherrera',
+      href: 'https://twitter.com/JaHeBe',
     },
   ],
 };
@@ -244,4 +245,48 @@ export const socialLinks: Social[] = [
     Icon: StackOverflowIcon,
     href: 'https://stackoverflow.com/users/javierherrera',
   },
+];
+
+export const recommendations = [
+  {
+    title: 'Artículos de AI Engineering',
+    items: [
+      {
+        title: 'LangChain: Construyendo Agentes Inteligentes',
+        description: 'Guía completa sobre cómo utilizar LangChain para desarrollar agentes conversacionales avanzados y sistemas RAG.',
+        url: 'https://python.langchain.com/docs/get_started/introduction',
+        icon: 'fa-robot',
+      },
+      {
+        title: 'LangGraph: Flujos de Trabajo para Agentes IA',
+        description: 'Tutorial sobre la implementación de flujos de trabajo complejos con LangGraph para crear agentes multi-paso.',
+        url: 'https://github.com/langchain-ai/langgraph',
+        icon: 'fa-project-diagram',
+      },
+      {
+        title: 'RAG: Mejores Prácticas 2024',
+        description: 'Estrategias actualizadas para implementar sistemas de Retrieval Augmented Generation con mayor precisión y eficiencia.',
+        url: 'https://www.pinecone.io/learn/retrieval-augmented-generation/',
+        icon: 'fa-magnifying-glass-chart',
+      },
+      {
+        title: 'Prompt Engineering Avanzado',
+        description: 'Técnicas avanzadas para diseñar prompts efectivos que maximizan el rendimiento de los modelos de lenguaje.',
+        url: 'https://www.promptingguide.ai/',
+        icon: 'fa-pencil-alt',
+      },
+      {
+        title: 'Evaluación de Agentes IA',
+        description: 'Metodologías para evaluar el rendimiento y la confiabilidad de agentes de IA en entornos de producción.',
+        url: 'https://www.anthropic.com/index/evaluating-ai-systems',
+        icon: 'fa-chart-line',
+      },
+      {
+        title: 'Arquitecturas de Agentes Multi-Agente',
+        description: 'Diseño de sistemas donde múltiples agentes colaboran para resolver problemas complejos.',
+        url: 'https://arxiv.org/abs/2401.05596',
+        icon: 'fa-users',
+      }
+    ]
+  }
 ];

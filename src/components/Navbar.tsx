@@ -58,18 +58,18 @@ const Navbar: React.FC<NavbarProps> = ({ transparent = false }) => {
           {/* Nav Links - Desktop */}
           <nav className="hidden md:flex items-center space-x-1">
             {[
-              { name: 'Inicio', path: '/' },
-              { name: 'Servicios', path: '/ai-engineering-services' },
-              { name: 'Experiencia', path: '/#experience' },
-              { name: 'Proyectos', path: '/#projects' },
-              { name: 'Blog', path: '/blog' },
-              { name: 'Contacto', path: '/#contact-section' },
+              { name: 'Inicio', path: '/', icon: 'fas fa-home' },
+              { name: 'Servicios', path: '/ai-engineering-services', icon: 'fas fa-cogs' },
+              { name: 'Experiencia', path: '/#experience', icon: 'fas fa-briefcase' },
+              { name: 'Blog', path: '/blog', icon: 'fas fa-blog' },
+              { name: 'Contacto', path: '/#contact-section', icon: 'fas fa-envelope' },
             ].map((item, index) => (
               <a
                 key={index}
                 href={item.path}
-                className="px-4 py-2 text-neutral-300 hover:text-white-safe relative group transition-colors"
+                className="px-4 py-2 text-neutral-300 hover:text-white-safe relative group transition-colors flex items-center"
               >
+                <i className={`${item.icon} mr-2 text-accent`}></i>
                 <span>{item.name}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300"></span>
               </a>
@@ -127,19 +127,19 @@ const Navbar: React.FC<NavbarProps> = ({ transparent = false }) => {
           >
             <div className="container mx-auto px-6 py-6 space-y-1">
               {[
-                { name: 'Inicio', path: '/' },
-                { name: 'Servicios', path: '/ai-engineering-services' },
-                { name: 'Experiencia', path: '/#experience' },
-                { name: 'Proyectos', path: '/#projects' },
-                { name: 'Blog', path: '/blog' },
-                { name: 'Contacto', path: '/#contact-section' },
+                { name: 'Inicio', path: '/', icon: 'fas fa-home' },
+                { name: 'Servicios', path: '/ai-engineering-services', icon: 'fas fa-cogs' },
+                { name: 'Experiencia', path: '/#experience', icon: 'fas fa-briefcase' },
+                { name: 'Blog', path: '/blog', icon: 'fas fa-blog' },
+                { name: 'Contacto', path: '/#contact-section', icon: 'fas fa-envelope' },
               ].map((item, index) => (
                 <a
                   key={index}
                   href={item.path}
-                  className="block py-3 px-4 hover:bg-primary-light rounded-md text-neutral-300 hover:text-white-safe"
+                  className="block py-3 px-4 hover:bg-primary-light rounded-md text-neutral-300 hover:text-white-safe flex items-center"
                   onClick={() => setIsOpen(false)}
                 >
+                  <i className={`${item.icon} mr-3 text-accent w-5 text-center`}></i>
                   {item.name}
                 </a>
               ))}

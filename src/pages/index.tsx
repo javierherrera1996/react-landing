@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import dynamic from 'next/dynamic';
+import { recommendations } from '../data/data';
 
 // Importación dinámica de componentes con animaciones
 const HeroSectionDynamic = dynamic(() => import('../components/HeroSection'), {
@@ -33,19 +34,7 @@ const UseCasesSection = dynamic(() => import('../components/UseCasesSection'), {
   ssr: false
 });
 
-const ProjectsSection = dynamic(() => import('../components/ProjectsSection'), {
-  ssr: false
-});
-
 const EducationSection = dynamic(() => import('../components/EducationSection'), {
-  ssr: false
-});
-
-const BlogPreviewSection = dynamic(() => import('../components/BlogPreviewSection'), {
-  ssr: false
-});
-
-const TestimonialSection = dynamic(() => import('../components/TestimonialSection'), {
   ssr: false
 });
 
@@ -53,11 +42,20 @@ const CtaSection = dynamic(() => import('../components/CtaSection'), {
   ssr: false
 });
 
+const ContactSection = dynamic(() => import('../components/ContactSection'), {
+  ssr: false
+});
+
+// Importar el componente de recomendaciones
+const RecommendationsSection = dynamic(() => import('../components/RecommendationsSection'), {
+  ssr: false
+});
+
 // Datos personalizados basados en tu CV
 const resumeData = {
   hero: {
-    headline: "AI Agent Developer & Data Scientist",
-    subheadline: "Especialista en diseñar e implementar soluciones de Inteligencia Artificial y Machine Learning para finanzas, salud y seguros. Enfocado en el desarrollo de agentes inteligentes utilizando frameworks como LangChain y LangGraph.",
+    headline: "AI Agent Developer & Data Scientist | Especialista en LangChain y LangGraph",
+    subheadline: "Consultor experto en Inteligencia Artificial y Machine Learning para finanzas, salud y seguros. Desarrollo de agentes inteligentes con frameworks de vanguardia como LangChain y LangGraph para automatizar procesos y mejorar la experiencia del cliente.",
     ctaText: "Contactarme",
     ctaLink: "/contacto",
     backgroundImage: "/images/pattern-bg.jpg"
@@ -86,8 +84,8 @@ const resumeData = {
       {
         name: "Cloud & Big Data",
         skills: [
-          { name: "Google Cloud Platform", level: 85, icon: "fab fa-google" },
-          { name: "Microsoft Azure", level: 80, icon: "fab fa-microsoft" },
+          { name: "GCP", level: 85, icon: "fab fa-google" },
+          { name: "Azure", level: 80, icon: "fab fa-microsoft" },
           { name: "AWS", level: 75, icon: "fab fa-aws" },
           { name: "Spark/PySpark", level: 80, icon: "fas fa-bolt" }
         ]
@@ -95,9 +93,9 @@ const resumeData = {
       {
         name: "Herramientas & Metodologías",
         skills: [
-          { name: "Visualización de Datos", level: 90 },
-          { name: "NLP", level: 95 },
-          { name: "Web Scraping", level: 85 },
+          { name: "Visualización de Datos", level: 90, icon: "fas fa-chart-bar" },
+          { name: "NLP", level: 95, icon: "fas fa-comment-dots" },
+          { name: "Web Scraping", level: 85, icon: "fas fa-spider" },
           { name: "Prompt Engineering", level: 90, icon: "fas fa-pencil-alt" },
           { name: "Metodologías Ágiles", level: 85, icon: "fas fa-tasks" },
           { name: "Control de Versiones (Git)", level: 90, icon: "fab fa-git-alt" }
@@ -140,114 +138,61 @@ const resumeData = {
     subtitle: "Formación académica y certificaciones profesionales",
     items: [
       {
-        title: "Máster en Inteligencia Artificial",
-        institution: "Universidad Politécnica de Madrid",
-        period: "2018 - 2020",
-        description: "Especialización en sistemas de procesamiento de lenguaje natural y modelos generativos."
+        title: "Master's Degree in Economics",
+        institution: "University of The Andes, Colombia",
+        period: "2023 - Presente",
+        description: "Estudios de posgrado en economía con enfoque en análisis de datos y políticas económicas."
       },
       {
-        title: "LangChain & Vector Databases in Production",
-        institution: "DeepLearning.AI",
+        title: "Bachelor's Degree in Economics",
+        institution: "Pontificia Xavierian University, Colombia",
+        period: "2015 - 2020",
+        description: "Formación en economía con énfasis en análisis cuantitativo y políticas públicas."
+      },
+      {
+        title: "Summer School in Chicago (Business Program)",
+        institution: "U. Loyola Chicago, USA",
         period: "2023",
-        description: "Implementación de aplicaciones avanzadas con LangChain y bases de datos vectoriales."
+        description: "Programa intensivo de negocios y economía internacional."
       },
       {
-        title: "Large Language Models Certification",
-        institution: "OpenAI",
+        title: "EF Course Abroad",
+        institution: "Manchester, UK",
         period: "2023",
-        description: "Certificación oficial en desarrollo con modelos de lenguaje de OpenAI y técnicas de prompt engineering."
+        description: "Certificación C1 en inglés."
       },
       {
-        title: "Advanced React & Next.js",
-        institution: "Udemy",
-        period: "2022",
-        description: "Desarrollo de aplicaciones web modernas con React, Next.js y TypeScript."
+        title: "MBA Fundamentals",
+        institution: "LSE",
+        period: "2023",
+        description: "Fundamentos de administración de negocios."
       },
       {
-        title: "AWS Certified Machine Learning Specialist",
-        institution: "AWS",
-        period: "2021",
-        description: "Certificación en implementación de soluciones de Machine Learning en la nube de Amazon."
+        title: "IBM Data Science Professional Certificate",
+        institution: "IBM",
+        period: "2023",
+        description: "Certificación profesional en ciencia de datos."
       },
       {
-        title: "Ingeniería Informática",
-        institution: "Universidad Complutense de Madrid",
-        period: "2014 - 2018",
-        description: "Estudios de grado con enfoque en desarrollo de software y sistemas inteligentes."
+        title: "IBM AI Engineering Professional Certificate",
+        institution: "IBM",
+        period: "2023",
+        description: "Certificación profesional en ingeniería de IA."
+      },
+      {
+        title: "DS4A",
+        institution: "Correlation One",
+        period: "2023",
+        description: "Programa de ciencia de datos para América Latina."
       }
     ]
-  },
-  projects: {
-    title: "Proyectos Destacados",
-    subtitle: "Una selección de mis mejores trabajos en IA y ciencia de datos",
-    projects: [
-      {
-        title: "Sistema de Análisis de Llamadas con IA",
-        description: "Desarrollo de un sistema automatizado para analizar llamadas de servicio al cliente utilizando NLP y machine learning para identificar patrones y mejorar la calidad del servicio.",
-        imageUrl: "/images/project-callanalysis.jpg",
-        technologies: ["Python", "NLP", "LangChain", "Speech Recognition", "ML"],
-        demoLink: "https://demo-project.com",
-        codeLink: "https://github.com/javierherrera1996/call-analysis"
-      },
-      {
-        title: "Agente Conversacional con RAG",
-        description: "Implementación de un agente conversacional basado en LangGraph y LangChain utilizando Retrieval Augmented Generation para proporcionar respuestas informadas y precisas a consultas complejas.",
-        imageUrl: "/images/project-conversational.jpg",
-        technologies: ["LangChain", "LangGraph", "RAG", "Vector Databases", "LLMs"],
-        demoLink: "https://demo-agent.com",
-        codeLink: "https://github.com/javierherrera1996/conversational-agent"
-      },
-      {
-        title: "Modelos Predictivos para Retail",
-        description: "Desarrollo de modelos de previsión de demanda y segmentación de clientes para el sector minorista, mejorando la precisión de las previsiones y la toma de decisiones estratégicas.",
-        imageUrl: "/images/project-retail.jpg",
-        technologies: ["Python", "R", "Statistical Models", "Machine Learning", "Data Visualization"],
-        demoLink: "https://demo-retail.com",
-        codeLink: "https://github.com/javierherrera1996/retail-analytics"
-      }
-    ]
-  },
-  testimonials: {
-    title: "Recomendaciones Profesionales",
-    subtitle: "Lo que dicen mis colaboradores y clientes",
-    testimonials: [
-      {
-        quote: "Javier ha demostrado una excepcional capacidad para traducir problemas de negocio complejos en soluciones de IA prácticas y eficientes. Su trabajo con los agentes conversacionales transformó nuestra atención al cliente.",
-        author: "María González",
-        position: "CTO",
-        company: "Banco Davivienda",
-        avatar: "/images/testimonial-1.jpg"
-      },
-      {
-        quote: "Su conocimiento en prompt engineering y desarrollo de agentes inteligentes es admirable. Javier tiene la habilidad única de comunicar conceptos técnicos complejos de manera clara y accesible.",
-        author: "Carlos Ramírez",
-        position: "Director de Innovación",
-        company: "Tech Solutions Colombia",
-        avatar: "/images/testimonial-2.jpg"
-      },
-      {
-        quote: "Como profesor, Javier tiene un don para hacer que temas complejos de data science sean comprensibles y aplicables. Sus estudiantes siempre destacan por la calidad práctica de sus proyectos.",
-        author: "Laura Méndez",
-        position: "Coordinadora Académica",
-        company: "Universidad Sergio Arboleda",
-        avatar: "/images/testimonial-3.jpg"
-      }
-    ]
-  },
-  cta: {
-    title: "¿Interesado en colaborar?",
-    description: "Estoy disponible para proyectos de consultoría en IA, desarrollo de agentes inteligentes y análisis de datos avanzados",
-    primaryBtnText: "Contáctame",
-    primaryBtnLink: "/contacto",
-    secondaryBtnText: "Ver portfolio",
-    secondaryBtnLink: "https://javierherrera1996.github.io"
   }
 };
 
 const profileData = {
   title: "Perfil Profesional",
-  content: "AI Agent Developer, Consultor y Data Scientist con más de 5 años de experiencia en diseñar e implementar soluciones de Inteligencia Artificial y Machine Learning para finanzas, salud y seguros. Actualmente enfocado en desarrollar agentes inteligentes utilizando frameworks de vanguardia como LangChain y LangGraph, con énfasis en automatizar procesos y mejorar las interacciones con los clientes.",
-  portfolioLink: "https://javierherrera1996.github.io"
+  content: "Como AI Agent Developer y Data Scientist con más de 5 años de experiencia, me especializo en el desarrollo de soluciones de Inteligencia Artificial avanzadas utilizando frameworks de vanguardia como LangChain y LangGraph. Mi enfoque se centra en la creación de agentes inteligentes que automatizan procesos complejos y mejoran la experiencia del cliente en sectores como finanzas, salud y seguros. Combino conocimientos técnicos profundos en machine learning, procesamiento de lenguaje natural y arquitecturas de IA con una sólida comprensión de las necesidades empresariales. Mi experiencia abarca desde el diseño e implementación de sistemas RAG (Retrieval Augmented Generation) hasta el desarrollo de agentes conversacionales avanzados y soluciones de análisis predictivo. Además, como profesor adjunto, comparto mi conocimiento con la próxima generación de profesionales en IA, impartiendo cursos sobre métodos predictivos y análisis de datos. Mi objetivo es seguir impulsando la innovación en el campo de la IA, creando soluciones que generen valor tangible y medible para las organizaciones.",
+  portfolioLink: undefined
 };
 
 // Agregar sección de casos de uso para mejora SEO
@@ -318,41 +263,6 @@ const useCasesData = {
   ]
 };
 
-// Agregar datos de blog para SEO
-const blogData = {
-  title: "Artículos sobre AI Engineering",
-  subtitle: "Insights, tutoriales y mejores prácticas sobre LangChain, RAG y desarrollo de agentes de IA",
-  posts: [
-    {
-      title: "Implementando RAG con LangChain: Una Guía Práctica",
-      excerpt: "Aprende a desarrollar sistemas de Retrieval Augmented Generation que conectan tus documentos con modelos de lenguaje para respuestas precisas.",
-      slug: "implementando-rag-con-langchain",
-      date: "10 Oct 2023",
-      author: "Javier Herrera",
-      image: "/images/blog-rag.jpg",
-      tags: ["LangChain", "RAG", "Tutorial", "Vector Databases"]
-    },
-    {
-      title: "El Arte del Prompt Engineering para Aplicaciones Empresariales",
-      excerpt: "Estrategias avanzadas de prompt engineering para mejorar la calidad, precisión y utilidad de las respuestas de los LLMs en entornos de negocio.",
-      slug: "arte-prompt-engineering-empresarial",
-      date: "25 Sep 2023",
-      author: "Javier Herrera",
-      image: "/images/blog-prompt.jpg",
-      tags: ["Prompt Engineering", "LLMs", "GPT-4", "Best Practices"]
-    },
-    {
-      title: "Construyendo Agentes Autónomos con LangGraph: Paso a Paso",
-      excerpt: "Guía completa para desarrollar agentes de IA capaces de realizar tareas complejas mediante planificación y ejecución autónoma.",
-      slug: "agentes-autonomos-langgraph",
-      date: "12 Sep 2023",
-      author: "Javier Herrera",
-      image: "/images/blog-agents.jpg",
-      tags: ["LangGraph", "Autonomous Agents", "LangChain", "AI Development"]
-    }
-  ]
-};
-
 const HomePage: React.FC = () => {
   return (
     <Layout>
@@ -361,11 +271,35 @@ const HomePage: React.FC = () => {
       <SkillsSectionDynamic {...resumeData.skills} />
       <UseCasesSection {...useCasesData} />
       <ExperienceSectionDynamic {...resumeData.experience} />
-      <ProjectsSection {...resumeData.projects} />
       <EducationSection {...resumeData.education} />
-      <BlogPreviewSection {...blogData} />
-      <TestimonialSection {...resumeData.testimonials} />
-      <CtaSection {...resumeData.cta} />
+      {recommendations && recommendations.length > 0 && recommendations[0] && (
+        <RecommendationsSection 
+          title="Artículos de AI Engineering" 
+          items={recommendations[0].items || []} 
+        />
+      )}
+      <ContactSection 
+        title="Contacto"
+        subtitle="¿Interesado en colaborar? Estoy disponible para proyectos de consultoría en IA, desarrollo de agentes inteligentes y análisis de datos avanzados."
+        email="andeshebe96@gmail.com"
+        socialLinks={[
+          {
+            platform: "GitHub",
+            url: "https://github.com/javierherrera1996",
+            icon: "fab fa-github"
+          },
+          {
+            platform: "LinkedIn",
+            url: "https://www.linkedin.com/in/javierherrera",
+            icon: "fab fa-linkedin"
+          },
+          {
+            platform: "Twitter",
+            url: "https://twitter.com/javierherrera",
+            icon: "fab fa-twitter"
+          }
+        ]}
+      />
     </Layout>
   );
 };

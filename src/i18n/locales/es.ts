@@ -1,11 +1,11 @@
 export default {
   hero: {
-    name: 'Transformando Datos en Soluciones Inteligentes',
+    name: 'AI Agent Developer & Data Scientist | Especialista en LangChain y LangGraph',
     description: {
       part1:
-        'Como Data Scientist y Especialista en IA, ayudo a empresas a transformar sus datos en soluciones inteligentes que impulsan el crecimiento y la innovación.',
+        'Como AI Agent Developer y Data Scientist, ayudo a empresas a transformar sus datos en soluciones inteligentes que impulsan el crecimiento y la innovación.',
       part2:
-        'Especializado en Procesamiento de Lenguaje Natural y IA Conversacional, desarrollo sistemas que mejoran la experiencia del cliente y optimizan procesos empresariales.',
+        'Especializado en LangChain y LangGraph, desarrollo sistemas que mejoran la experiencia del cliente y optimizan procesos empresariales mediante la implementación de agentes inteligentes y soluciones de IA avanzadas.',
     },
     actions: {
       downloadCV: 'Descargar CV',
@@ -15,19 +15,19 @@ export default {
   about: {
     title: 'Sobre Mí',
     description:
-      'Soy un Data Scientist y Especialista en IA con experiencia en Procesamiento de Lenguaje Natural e IA Conversacional. He trabajado en diversos proyectos involucrando análisis de texto, análisis de voz y soluciones impulsadas por IA.',
+      'AI Agent Developer, Consultor y Data Scientist con más de 5 años de experiencia en diseñar e implementar soluciones de Inteligencia Artificial y Machine Learning para finanzas, salud y seguros. Especializado en el desarrollo de agentes inteligentes utilizando frameworks de vanguardia como LangChain y LangGraph, con énfasis en automatizar procesos y mejorar las interacciones con los clientes. Mi enfoque combina conocimientos técnicos avanzados con una profunda comprensión de las necesidades empresariales.',
   },
   skills: {
     title: 'Habilidades',
     groups: {
       programming: 'Lenguajes de Programación',
-      ai: 'Frameworks de IA & ML',
+      ai: 'Frameworks & Librerías',
       cloud: 'Cloud & Big Data',
       tools: 'Herramientas & Metodologías',
     },
   },
   contact: {
     title: 'Contacto',
-    description: 'No dudes en contactarme si tienes alguna pregunta o te gustaría discutir posibles colaboraciones.',
+    description: '¿Interesado en colaborar? Estoy disponible para proyectos de consultoría en IA, desarrollo de agentes inteligentes y análisis de datos avanzados.',
   },
 };
