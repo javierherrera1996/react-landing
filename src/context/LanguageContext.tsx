@@ -16,7 +16,16 @@ const resources = {
       'skills.title': 'Technical Skills',
       'experience.title': 'Professional Experience',
       'education.title': 'Education & Certifications',
-      // Añade más traducciones según necesites
+      // Menú
+      'menu.home': 'Home',
+      'menu.skills': 'Skills',
+      'menu.usecases': 'Use Cases',
+      'menu.services': 'Services',
+      'menu.experience': 'Experience',
+      'menu.education': 'Education',
+      'menu.blog': 'Blog',
+      'menu.contact': 'Contact',
+      'cta.contact': 'Contact Me',
     }
   },
   es: {
@@ -28,7 +37,16 @@ const resources = {
       'skills.title': 'Habilidades Técnicas',
       'experience.title': 'Experiencia Profesional',
       'education.title': 'Educación y Certificaciones',
-      // Añade más traducciones según necesites
+      // Menú
+      'menu.home': 'Inicio',
+      'menu.skills': 'Habilidades',
+      'menu.usecases': 'Casos de Uso',
+      'menu.services': 'Servicios',
+      'menu.experience': 'Experiencia',
+      'menu.education': 'Educación',
+      'menu.blog': 'Blog',
+      'menu.contact': 'Contacto',
+      'cta.contact': 'Contáctame',
     }
   }
 };
@@ -38,8 +56,8 @@ i18next
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'es', // Idioma predeterminado
-    fallbackLng: 'es',
+    lng: 'en', // Idioma predeterminado ahora es inglés
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false
     }
@@ -66,7 +84,7 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('es');
+  const [language, setLanguage] = useState<Language>('en');
 
   // Cambiar el idioma en i18next cuando cambia el estado
   const handleSetLanguage = (lang: Language) => {

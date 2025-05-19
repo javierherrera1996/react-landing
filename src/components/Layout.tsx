@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
-// Importar componentes sin SSR
-const Header = dynamic(() => import('./Header'), { ssr: false });
+// Importar Navbar sin SSR
+const Navbar = dynamic(() => import('./Navbar'), { ssr: false });
 // Importar Footer directamente en lugar de usar dynamic import
 import Footer from './Footer';
 
@@ -83,7 +83,7 @@ const Layout: React.FC<LayoutProps> = ({
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       
-      <Header />
+      <Navbar />
       
       <main>
         {children}

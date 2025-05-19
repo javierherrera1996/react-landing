@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-primary-dark relative overflow-hidden border-t border-neutral-800">
       {/* Patrón de puntos en el fondo */}
@@ -73,17 +76,17 @@ const Footer: React.FC = () => {
           {/* Column 2 - Quick Links */}
           <div>
             <h3 className="text-white-safe font-bold mb-6 relative inline-block">
-              Enlaces Rápidos
+              {t('Enlaces Rápidos', 'Enlaces Rápidos')}
               <span className="absolute bottom-0 left-0 w-full h-px bg-accent"></span>
             </h3>
             
             <ul className="space-y-3">
               {[
-                { name: 'Inicio', path: '/', icon: 'fas fa-home' },
-                { name: 'Servicios', path: '/ai-engineering-services', icon: 'fas fa-cogs' },
-                { name: 'Experiencia', path: '/#experience', icon: 'fas fa-briefcase' },
-                { name: 'Blog', path: '/blog', icon: 'fas fa-blog' },
-                { name: 'Contacto', path: '/#contact-section', icon: 'fas fa-envelope' },
+                { name: t('menu.home'), path: '/', icon: 'fas fa-home' },
+                { name: t('menu.services'), path: '/ai-engineering-services', icon: 'fas fa-cogs' },
+                { name: t('menu.experience'), path: '/#experience', icon: 'fas fa-briefcase' },
+                { name: t('menu.blog'), path: '/blog', icon: 'fas fa-blog' },
+                { name: t('menu.contact'), path: '/#contact-section', icon: 'fas fa-envelope' },
               ].map((item, index) => (
                 <li key={index}>
                   <a 
@@ -167,7 +170,7 @@ const Footer: React.FC = () => {
                 whileHover={{ y: -2, boxShadow: "0 10px 15px -3px rgba(0, 184, 217, 0.2)" }}
                 whileTap={{ y: 0 }}
               >
-                <span>Contáctame</span>
+                <span>{t('cta.contact')}</span>
                 <i className="fas fa-arrow-right ml-2"></i>
               </motion.a>
             </div>

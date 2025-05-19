@@ -74,7 +74,7 @@ const EducationSection: React.FC<EducationSectionProps> = ({
   // Renderizado para servidor (sin animaciones)
   if (!isMounted) {
     return (
-      <section id="educacion" className="py-20 bg-primary">
+      <section id="education" className="py-20 bg-primary">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4 text-white">{title}</h2>
@@ -123,7 +123,7 @@ const EducationSection: React.FC<EducationSectionProps> = ({
   
   // Renderizado para cliente (con animaciones)
   return (
-    <section id="educacion" className="py-20 bg-primary">
+    <section id="education" className="py-20 bg-primary">
       <div className="container mx-auto px-6">
         <MotionDiv 
           className="text-center mb-16"

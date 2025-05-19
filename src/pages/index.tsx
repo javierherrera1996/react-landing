@@ -113,7 +113,7 @@ const resumeDataEn: ResumeData = {
     headline: "AI Agent Developer & Data Scientist | LangChain & LangGraph Specialist",
     subheadline: "Expert consultant in Artificial Intelligence and Machine Learning for finance, healthcare, and insurance. I develop intelligent agents with cutting-edge frameworks like LangChain and LangGraph to automate processes and enhance customer experience.",
     ctaText: "Contact Me",
-    ctaLink: "/contact",
+    ctaLink: "/contact-section",
     backgroundImage: "/images/pattern-bg.jpg"
   },
   skills: {
