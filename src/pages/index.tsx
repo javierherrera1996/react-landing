@@ -113,7 +113,7 @@ const resumeDataEn: ResumeData = {
     headline: "AI Agent Developer & Data Scientist | LangChain & LangGraph Specialist",
     subheadline: "Expert consultant in Artificial Intelligence and Machine Learning for finance, healthcare, and insurance. I develop intelligent agents with cutting-edge frameworks like LangChain and LangGraph to automate processes and enhance customer experience.",
     ctaText: "Contact Me",
-    ctaLink: "/contact-section",
+    ctaLink: "/contact",
     backgroundImage: "/images/pattern-bg.jpg"
   },
   skills: {
@@ -530,6 +530,9 @@ const useCasesData: UseCasesData = {
   ]
 };
 
+// Calendly floating CTA button
+const CALENDLY_URL = "https://calendly.com/andreshebe96"; // Cambia por tu enlace real
+
 const HomePage: React.FC = () => {
   const { language: lang, setLanguage: setLang } = useLanguage();
 
@@ -539,6 +542,17 @@ const HomePage: React.FC = () => {
 
   return (
     <Layout>
+      {/* Botón flotante Calendly CTA */}
+      <a
+        href={CALENDLY_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-8 right-8 z-50 bg-accent text-white font-bold px-6 py-3 rounded-full shadow-lg hover:bg-accent/90 transition-colors flex items-center gap-2 animate-bounce"
+        style={{ boxShadow: '0 8px 32px 0 rgba(0,184,217,0.25)' }}
+      >
+        <i className="fas fa-calendar-alt text-lg"></i>
+        {lang === 'es' ? 'Agendar cita' : 'Book a meeting'}
+      </a>
       {/* Botón para cambiar idioma */}
       <div className="fixed top-14 right-4 z-50">
         <button
