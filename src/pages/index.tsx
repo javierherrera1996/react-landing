@@ -540,8 +540,48 @@ const HomePage: React.FC = () => {
   const profile = lang === 'es' ? profileData : profileDataEn;
   const useCases = lang === 'es' ? useCasesData : useCasesDataEn;
 
+  // JSON-LD Schema.org dinámico
+  const structuredData = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: lang === 'es' ? 'Javier Herrera' : 'Javier Herrera',
+    alternateName: 'Andres Herrera',
+    jobTitle: lang === 'es' ? 'Desarrollador de Agentes IA y Data Scientist' : 'AI Agent Developer & Data Scientist',
+    description: profile.content,
+    image: 'https://javierherrera.dev/images/profilepic.jpg',
+    url: 'https://javierherrera.dev',
+    sameAs: [
+      'https://github.com/javierherrera1996',
+      'https://www.linkedin.com/in/javierherrerab',
+      'https://twitter.com/JaHeBe'
+    ],
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Banco Davivienda',
+      url: 'https://www.davivienda.com/'
+    },
+    alumniOf: [
+      {
+        '@type': 'CollegeOrUniversity',
+        name: 'University of The Andes, Colombia',
+        url: 'https://uniandes.edu.co/'
+      },
+      {
+        '@type': 'CollegeOrUniversity',
+        name: 'Pontificia Xavierian University, Colombia',
+        url: 'https://www.javeriana.edu.co/'
+      }
+    ],
+    knowsAbout: resume.skills.categories.map(cat => cat.name),
+    knowsLanguage: lang === 'es' ? ['es', 'en'] : ['en', 'es']
+  });
+
   return (
-    <Layout>
+    <Layout
+      title={resume.hero.headline}
+      description={resume.hero.subheadline}
+      structuredData={structuredData}
+    >
       {/* Botón flotante Calendly CTA */}
       <a
         href={CALENDLY_URL}

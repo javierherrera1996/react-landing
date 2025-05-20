@@ -16,6 +16,7 @@ interface LayoutProps {
   ogType?: string;
   twitterCard?: string;
   robotsContent?: string;
+  structuredData?: string; // JSON-LD Schema.org
   children: ReactNode;
 }
 
@@ -28,6 +29,7 @@ const Layout: React.FC<LayoutProps> = ({
   ogType = "website",
   twitterCard = "summary_large_image",
   robotsContent = "index, follow",
+  structuredData, // nuevo prop
   children 
 }) => {
   // Construir URL canónica si se proporciona
@@ -81,6 +83,11 @@ const Layout: React.FC<LayoutProps> = ({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        
+        {/* JSON-LD Schema.org */}
+        {structuredData && (
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
+        )}
       </Head>
       
       <Navbar />
