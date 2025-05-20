@@ -11,7 +11,8 @@
     "start": "next start",
     "sitemap": "yarn next-sitemap",
     "predeploy": "NODE_ENV=production npm run build",
-    "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles"
+    "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles",
+    "postbuild": "npx next-sitemap"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.16",

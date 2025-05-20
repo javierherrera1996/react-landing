@@ -1,4 +1,14 @@
+# *
 User-agent: *
 Allow: /
 
-Sitemap: https://www.tudominio.com/sitemap.xml 
+# *
+User-agent: *
+Disallow: /404
+Disallow: /500
+
+# Host
+Host: https://javierherreraai.com
+
+# Sitemaps
+Sitemap: https://javierherreraai.com/sitemap.xml

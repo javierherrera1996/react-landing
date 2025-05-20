@@ -1,16 +1,7 @@
-/* eslint-env node */
 module.exports = {
   siteUrl: 'https://javierherreraai.com',
-  exclude: ['/404*', '/500*'],
-  transform: async (config, path) => {
-    return {
-      loc: path,
-      changefreq: config.changefreq,
-      priority: path === '/' ? 1 : config.priority,
-      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
-    };
-  },
   generateRobotsTxt: true,
+  exclude: ['/404*', '/500*'],
   robotsTxtOptions: {
     policies: [
       {
@@ -26,4 +17,4 @@ module.exports = {
       'https://javierherreraai.com/sitemap.xml',
     ],
   },
-};
+}; 

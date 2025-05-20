@@ -5,48 +5,14 @@ import { recommendations } from '../data/data';
 import { useLanguage } from '../context/LanguageContext';
 
 // Importación dinámica de componentes con animaciones
-const HeroSectionDynamic = dynamic(() => import('../components/HeroSection'), {
-  ssr: false,
-  loading: () => (
-    <div className="min-h-[80vh] flex items-center justify-center bg-primary">
-      <div className="text-center">
-        <div className="inline-block w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin mb-4"></div>
-        <h2 className="text-xl text-white-safe font-medium">Cargando...</h2>
-      </div>
-    </div>
-  )
-});
-
-const SkillsSectionDynamic = dynamic(() => import('../components/SkillsSection'), {
-  ssr: false,
-  loading: () => <div className="min-h-[50vh] bg-primary-dark"></div>
-});
-
-const ExperienceSectionDynamic = dynamic(() => import('../components/ExperienceSection'), {
-  ssr: false,
-  loading: () => <div className="min-h-[50vh] bg-primary"></div>
-});
-
-const ProfileSection = dynamic(() => import('../components/ProfileSection'), {
-  ssr: false
-});
-
-const UseCasesSection = dynamic(() => import('../components/UseCasesSection'), {
-  ssr: false
-});
-
-const EducationSection = dynamic(() => import('../components/EducationSection'), {
-  ssr: false
-});
-
-const ContactSection = dynamic(() => import('../components/ContactSection'), {
-  ssr: false
-});
-
-// Importar el componente de recomendaciones
-const RecommendationsSection = dynamic(() => import('../components/RecommendationsSection'), {
-  ssr: false
-});
+const HeroSectionDynamic = dynamic(() => import('../components/HeroSection'));
+const SkillsSectionDynamic = dynamic(() => import('../components/SkillsSection'));
+const ExperienceSectionDynamic = dynamic(() => import('../components/ExperienceSection'));
+const ProfileSection = dynamic(() => import('../components/ProfileSection'));
+const UseCasesSection = dynamic(() => import('../components/UseCasesSection'));
+const EducationSection = dynamic(() => import('../components/EducationSection'));
+const ContactSection = dynamic(() => import('../components/ContactSection'));
+const RecommendationsSection = dynamic(() => import('../components/RecommendationsSection'));
 
 // 1. Definir tipos estrictos para los datos principales
 
@@ -636,3 +602,7 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
+
+export const getStaticProps = async () => {
+  return { props: {} };
+};
