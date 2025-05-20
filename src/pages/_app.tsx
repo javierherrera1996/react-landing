@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Loading from '../components/Loading';
-
-import {LanguageProvider} from '../context/LanguageContext';
+import { IntlProvider } from 'next-intl';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isClient, setIsClient] = useState(false);
+  const { messages, ...rest } = pageProps;
 
   useEffect(() => {
     setIsClient(true);
@@ -28,9 +28,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   // Renderiza la aplicación solo del lado del cliente
   return (
-    <LanguageProvider>
-      <Component {...pageProps} />
-    </LanguageProvider>
+    <IntlProvider messages={messages} locale={rest.locale}>
+      <Component {...rest} />
+    </IntlProvider>
   );
 }
 

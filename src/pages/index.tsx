@@ -2,7 +2,8 @@ import React from 'react';
 import Layout from '../components/Layout';
 import dynamic from 'next/dynamic';
 import { recommendations } from '../data/data';
-import { useLanguage } from '../context/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
+import { GetStaticPropsContext } from 'next';
 
 // Importación dinámica de componentes con animaciones
 const HeroSectionDynamic = dynamic(() => import('../components/HeroSection'));
@@ -500,19 +501,20 @@ const useCasesData: UseCasesData = {
 const CALENDLY_URL = "https://calendly.com/andreshebe96"; // Cambia por tu enlace real
 
 const HomePage: React.FC = () => {
-  const { language: lang, setLanguage: setLang } = useLanguage();
+  const t = useTranslations('hero');
+  const locale = useLocale();
 
-  const resume = lang === 'es' ? resumeData : resumeDataEn;
-  const profile = lang === 'es' ? profileData : profileDataEn;
-  const useCases = lang === 'es' ? useCasesData : useCasesDataEn;
+  const resume = locale === 'es' ? resumeData : resumeDataEn;
+  const profile = locale === 'es' ? profileData : profileDataEn;
+  const useCases = locale === 'es' ? useCasesData : useCasesDataEn;
 
   // JSON-LD Schema.org dinámico
   const structuredData = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: lang === 'es' ? 'Javier Herrera' : 'Javier Herrera',
+    name: 'Javier Herrera',
     alternateName: 'Andres Herrera',
-    jobTitle: lang === 'es' ? 'Desarrollador de Agentes IA y Data Scientist' : 'AI Agent Developer & Data Scientist',
+    jobTitle: locale === 'es' ? 'Desarrollador de Agentes IA y Data Scientist' : 'AI Agent Developer & Data Scientist',
     description: profile.content,
     image: 'https://javierherrera.dev/images/profilepic.jpg',
     url: 'https://javierherrera.dev',
@@ -539,7 +541,7 @@ const HomePage: React.FC = () => {
       }
     ],
     knowsAbout: resume.skills.categories.map(cat => cat.name),
-    knowsLanguage: lang === 'es' ? ['es', 'en'] : ['en', 'es']
+    knowsLanguage: locale === 'es' ? ['es', 'en'] : ['en', 'es']
   });
 
   return (
@@ -557,17 +559,8 @@ const HomePage: React.FC = () => {
         style={{ boxShadow: '0 8px 32px 0 rgba(0,184,217,0.25)' }}
       >
         <i className="fas fa-calendar-alt text-lg"></i>
-        {lang === 'es' ? 'Agendar cita' : 'Book a meeting'}
+        {locale === 'es' ? 'Agendar cita' : 'Book a meeting'}
       </a>
-      {/* Botón para cambiar idioma */}
-      <div className="fixed top-14 right-4 z-50">
-        <button
-          onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
-          className="px-4 py-2 bg-accent text-white rounded shadow"
-        >
-          {lang === 'es' ? 'English' : 'Español'}
-        </button>
-      </div>
       <HeroSectionDynamic {...resume.hero} />
       <ProfileSection {...profile} />
       <SkillsSectionDynamic {...resume.skills} />
@@ -576,13 +569,13 @@ const HomePage: React.FC = () => {
       <EducationSection {...resume.education} />
       {recommendations && recommendations.length > 0 && recommendations[0] && (
         <RecommendationsSection 
-          title={lang === 'es' ? 'Artículos de AI Engineering' : 'AI Engineering Articles'}
+          title={locale === 'es' ? 'Artículos de AI Engineering' : 'AI Engineering Articles'}
           items={recommendations[0].items || []} 
         />
       )}
       <ContactSection 
-        title={lang === 'es' ? 'Contacto' : 'Contact'}
-        subtitle={lang === 'es' ? '¿Interesado en colaborar? Estoy disponible para proyectos de consultoría en IA, desarrollo de agentes inteligentes y análisis de datos avanzados.' : 'Interested in collaborating? I am available for consulting projects in AI, intelligent agent development, and advanced data analysis.'}
+        title={locale === 'es' ? 'Contacto' : 'Contact'}
+        subtitle={locale === 'es' ? '¿Interesado en colaborar? Estoy disponible para proyectos de consultoría en IA, desarrollo de agentes inteligentes y análisis de datos avanzados.' : 'Interested in collaborating? I am available for consulting projects in AI, intelligent agent development, and advanced data analysis.'}
         email="andeshebe96@gmail.com"
         socialLinks={[
           {
@@ -603,6 +596,10 @@ const HomePage: React.FC = () => {
 
 export default HomePage;
 
-export const getStaticProps = async () => {
-  return { props: {} };
-};
+export async function getStaticProps({locale}: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../../public/locales/${locale}/common.json`)).default
+    }
+  };
+}

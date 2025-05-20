@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Navbar: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations('menu');
+  const router = useRouter();
+  const currentLocale = router.locale || 'es';
+  const otherLocale = currentLocale === 'es' ? 'en' : 'es';
+  const switchTo = currentLocale === 'es' ? '/en' : '/';
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -16,13 +22,23 @@ const Navbar: React.FC = () => {
   }, []);
 
   const menuItems = [
-    { name: t('menu.home'), path: '/', icon: 'fas fa-home' },
-    { name: t('menu.skills', 'Skills'), path: '/#skills', icon: 'fas fa-brain' },
-    { name: t('menu.usecases', 'Use Cases'), path: '/#use-cases', icon: 'fas fa-lightbulb' },
-    { name: t('menu.experience'), path: '/#experience', icon: 'fas fa-briefcase' },
-    { name: t('menu.education', 'Education'), path: '/#education', icon: 'fas fa-graduation-cap' },
-    { name: t('menu.contact'), path: '/#contact-section', icon: 'fas fa-envelope' },
+    { name: t('home'), path: '/', icon: 'fas fa-home' },
+    { name: t('skills'), path: '/#skills', icon: 'fas fa-brain' },
+    { name: t('usecases'), path: '/#use-cases', icon: 'fas fa-lightbulb' },
+    { name: t('experience'), path: '/#experience', icon: 'fas fa-briefcase' },
+    { name: t('education'), path: '/#education', icon: 'fas fa-graduation-cap' },
+    { name: t('contact'), path: '/#contact-section', icon: 'fas fa-envelope' },
   ];
+
+  const getLocalePath = (locale: string) => {
+    if (locale === 'es') {
+      // Quita /en del path si existe
+      return router.asPath.replace(/^\/en(\/|$)/, '/') || '/';
+    } else {
+      // Si ya empieza con /en, no dupliques
+      return router.asPath.startsWith('/en') ? router.asPath : `/en${router.asPath}`;
+    }
+  };
 
   return (
     <motion.header
@@ -36,18 +52,13 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <motion.a
-            href="/"
-            className="text-white-safe text-xl font-bold"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            Javier Herrera
-          </motion.a>
+          <Link href="/" locale={currentLocale} legacyBehavior>
+            <a className="text-white-safe text-xl font-bold">Javier Herrera</a>
+          </Link>
 
           {/* Desktop Menu */}
           <nav className="hidden md:block">
-            <ul className="flex space-x-4">
+            <ul className="flex space-x-4 items-center">
               {menuItems.map((item, index) => (
                 <motion.li
                   key={item.name}
@@ -55,17 +66,30 @@ const Navbar: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index, duration: 0.5 }}
                 >
-                  <motion.a
-                    href={item.path}
-                    className="text-white-safe hover:text-accent flex items-center gap-2"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                  >
-                    <i className={`${item.icon}`}></i>
-                    {item.name}
-                  </motion.a>
+                  <Link href={item.path} locale={currentLocale} legacyBehavior scroll={false}>
+                    <a className="text-white-safe hover:text-accent flex items-center gap-2">
+                      <i className={`${item.icon}`}></i>
+                      {item.name}
+                    </a>
+                  </Link>
                 </motion.li>
               ))}
+              {/* Botón cambio idioma desktop */}
+              <li>
+                <Link
+                  href={getLocalePath(otherLocale)}
+                  locale={otherLocale}
+                  scroll={false}
+                  legacyBehavior
+                >
+                  <a
+                    className="ml-4 px-3 py-1 rounded bg-accent text-white hover:bg-accent/90 transition-colors font-semibold"
+                    aria-label="Cambiar idioma"
+                  >
+                    {otherLocale === 'en' ? 'English' : 'Español'}
+                  </a>
+                </Link>
+              </li>
             </ul>
           </nav>
 
@@ -100,16 +124,34 @@ const Navbar: React.FC = () => {
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.2, delay: index * 0.05 }}
                 >
-                  <a
-                    href={item.path}
-                    className="text-white-safe hover:text-accent block py-2 flex items-center gap-2"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <i className={`${item.icon}`}></i>
-                    {item.name}
-                  </a>
+                  <Link href={item.path} locale={currentLocale} legacyBehavior scroll={false}>
+                    <a
+                      className="text-white-safe hover:text-accent block py-2 flex items-center gap-2"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <i className={`${item.icon}`}></i>
+                      {item.name}
+                    </a>
+                  </Link>
                 </motion.li>
               ))}
+              {/* Botón cambio idioma mobile */}
+              <li>
+                <Link
+                  href={getLocalePath(otherLocale)}
+                  locale={otherLocale}
+                  scroll={false}
+                  legacyBehavior
+                >
+                  <a
+                    className="w-full mt-2 px-3 py-2 rounded bg-accent text-white hover:bg-accent/90 transition-colors font-semibold"
+                    aria-label="Cambiar idioma"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {otherLocale === 'en' ? 'English' : 'Español'}
+                  </a>
+                </Link>
+              </li>
             </ul>
           </motion.div>
         )}

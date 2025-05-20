@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 
 // Importar Navbar sin SSR
 const Navbar = dynamic(() => import('./Navbar'), { ssr: false });
@@ -32,9 +33,11 @@ const Layout: React.FC<LayoutProps> = ({
   structuredData, // nuevo prop
   children 
 }) => {
-  // Construir URL canónica si se proporciona
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://javierherrera.dev';
+  const router = useRouter();
+  const locale = router.locale || 'es';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://javierherreraai.com';
   const canonicalUrl = canonical ? `${siteUrl}${canonical}` : undefined;
+  const path = router.asPath === '/' ? '' : router.asPath;
   
   return (
     <>
@@ -88,6 +91,11 @@ const Layout: React.FC<LayoutProps> = ({
         {structuredData && (
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
         )}
+        
+        {/* hreflang alternates */}
+        <link rel="alternate" href={`${siteUrl}${path}`} hrefLang="es" />
+        <link rel="alternate" href={`${siteUrl}/en${path}`} hrefLang="en" />
+        <link rel="alternate" href={`${siteUrl}${path}`} hrefLang="x-default" />
       </Head>
       
       <Navbar />
