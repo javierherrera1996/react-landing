@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic';
 import { recommendations } from '../data/data';
 import { useTranslations, useLocale } from 'next-intl';
 import { GetStaticPropsContext } from 'next';
+import { getHomePageSchema } from '../utils/structuredData';
+import { PAGE_META } from '../utils/seoConstants';
 
 // Importación dinámica de componentes con animaciones
 const HeroSectionDynamic = dynamic(() => import('../components/HeroSection'));
@@ -501,95 +503,67 @@ const useCasesData: UseCasesData = {
 const CALENDLY_URL = "https://calendly.com/andreshebe96"; // Cambia por tu enlace real
 
 const HomePage: React.FC = () => {
-  const t = useTranslations('hero');
+  const t = useTranslations('Index');
   const locale = useLocale();
 
   const resume = locale === 'es' ? resumeData : resumeDataEn;
   const profile = locale === 'es' ? profileData : profileDataEn;
   const useCases = locale === 'es' ? useCasesData : useCasesDataEn;
 
-  // JSON-LD Schema.org dinámico
-  const structuredData = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Javier Herrera',
-    alternateName: 'Andres Herrera',
-    jobTitle: locale === 'es' ? 'Desarrollador de Agentes IA y Data Scientist' : 'AI Agent Developer & Data Scientist',
-    description: profile.content,
-    image: 'https://javierherrera.dev/images/profilepic.jpg',
-    url: 'https://javierherrera.dev',
-    sameAs: [
-      'https://github.com/javierherrera1996',
-      'https://www.linkedin.com/in/javierherrerab',
-      'https://twitter.com/JaHeBe'
-    ],
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Banco Davivienda',
-      url: 'https://www.davivienda.com/'
-    },
-    alumniOf: [
-      {
-        '@type': 'CollegeOrUniversity',
-        name: 'University of The Andes, Colombia',
-        url: 'https://uniandes.edu.co/'
-      },
-      {
-        '@type': 'CollegeOrUniversity',
-        name: 'Pontificia Xavierian University, Colombia',
-        url: 'https://www.javeriana.edu.co/'
-      }
-    ],
-    knowsAbout: resume.skills.categories.map(cat => cat.name),
-    knowsLanguage: locale === 'es' ? ['es', 'en'] : ['en', 'es']
-  });
+  // Generate structured data for SEO
+  const structuredData = getHomePageSchema();
 
   return (
-    <Layout
-      title={resume.hero.headline}
-      description={resume.hero.subheadline}
+    <Layout 
+      title={PAGE_META.home.title}
+      description={PAGE_META.home.description}
+      keywords={PAGE_META.home.keywords}
+      ogImage="/images/perfil.jpeg"
       structuredData={structuredData}
+      language={locale}
     >
-      {/* Botón flotante Calendly CTA */}
-      <a
-        href={CALENDLY_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 bg-accent text-white font-bold px-6 py-3 rounded-full shadow-lg hover:bg-accent/90 transition-colors flex items-center gap-2 animate-bounce"
-        style={{ boxShadow: '0 8px 32px 0 rgba(0,184,217,0.25)' }}
-      >
-        <i className="fas fa-calendar-alt text-lg"></i>
-        {locale === 'es' ? 'Agendar cita' : 'Book a meeting'}
-      </a>
-      <HeroSectionDynamic {...resume.hero} />
-      <ProfileSection {...profile} />
-      <SkillsSectionDynamic {...resume.skills} />
-      <UseCasesSection {...useCases} />
-      <ExperienceSectionDynamic {...resume.experience} />
-      <EducationSection {...resume.education} />
-      {recommendations && recommendations.length > 0 && recommendations[0] && (
-        <RecommendationsSection 
-          title={locale === 'es' ? 'Artículos de AI Engineering' : 'AI Engineering Articles'}
-          items={recommendations[0].items || []} 
+      <div className="bg-neutral-900 text-white">
+        {/* Botón flotante Calendly CTA */}
+        <a
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-8 right-8 z-50 bg-accent text-white font-bold px-6 py-3 rounded-full shadow-lg hover:bg-accent/90 transition-colors flex items-center gap-2 animate-bounce"
+          style={{ boxShadow: '0 8px 32px 0 rgba(0,184,217,0.25)' }}
+        >
+          <i className="fas fa-calendar-alt text-lg"></i>
+          {locale === 'es' ? 'Agendar cita' : 'Book a meeting'}
+        </a>
+        <HeroSectionDynamic {...resume.hero} />
+        <ProfileSection {...profile} />
+        <SkillsSectionDynamic {...resume.skills} />
+        <UseCasesSection {...useCases} />
+        <ExperienceSectionDynamic {...resume.experience} />
+        <EducationSection {...resume.education} />
+        {recommendations && recommendations.length > 0 && recommendations[0] && (
+          <RecommendationsSection 
+            title={locale === 'es' ? 'Artículos de AI Engineering' : 'AI Engineering Articles'}
+            items={recommendations[0].items || []} 
+          />
+        )}
+        <ContactSection 
+          title={locale === 'es' ? 'Contacto' : 'Contact'}
+          subtitle={locale === 'es' ? '¿Interesado en colaborar? Estoy disponible para proyectos de consultoría en IA, desarrollo de agentes inteligentes y análisis de datos avanzados.' : 'Interested in collaborating? I am available for consulting projects in AI, intelligent agent development, and advanced data analysis.'}
+          email="andeshebe96@gmail.com"
+          socialLinks={[
+            {
+              platform: "GitHub",
+              url: "https://github.com/javierherrera1996",
+              icon: "fab fa-github"
+            },
+            {
+              platform: "LinkedIn",
+              url: "https://www.linkedin.com/in/javierherrerab",
+              icon: "fab fa-linkedin"
+            }
+          ]}
         />
-      )}
-      <ContactSection 
-        title={locale === 'es' ? 'Contacto' : 'Contact'}
-        subtitle={locale === 'es' ? '¿Interesado en colaborar? Estoy disponible para proyectos de consultoría en IA, desarrollo de agentes inteligentes y análisis de datos avanzados.' : 'Interested in collaborating? I am available for consulting projects in AI, intelligent agent development, and advanced data analysis.'}
-        email="andeshebe96@gmail.com"
-        socialLinks={[
-          {
-            platform: "GitHub",
-            url: "https://github.com/javierherrera1996",
-            icon: "fab fa-github"
-          },
-          {
-            platform: "LinkedIn",
-            url: "https://www.linkedin.com/in/javierherrerab",
-            icon: "fab fa-linkedin"
-          }
-        ]}
-      />
+      </div>
     </Layout>
   );
 };

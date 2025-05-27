@@ -1,18 +1,24 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { motion } from 'framer-motion';
+import { getServicesPageSchema } from '../utils/structuredData';
+import { useLocale } from 'next-intl';
+import { PAGE_META } from '../utils/seoConstants';
 
 const AiEngineeringPage: React.FC = () => {
-  // Metadata para SEO específico de AI Engineering
-  const seoTitle = "Servicios de AI Engineering | Javier Herrera - Experto en LangChain y LangGraph";
-  const seoDescription = "Desarrollo de agentes de IA personalizados con LangChain, implementación de RAG y arquitecturas LLM avanzadas. Consultoría especializada en prompt engineering y flujos cognitivos.";
-  const seoKeywords = "AI Engineering, LangChain, RAG, LangGraph, Machine Learning, NLP, Prompt Engineering, Consultoría IA, LLM, Agentes IA, Colombia";
+  const locale = useLocale();
+  
+  // Generate structured data for SEO
+  const structuredData = getServicesPageSchema();
 
   return (
     <Layout 
-      title={seoTitle}
-      description={seoDescription}
-      keywords={seoKeywords}
+      title={PAGE_META.services.title}
+      description={PAGE_META.services.description}
+      keywords={PAGE_META.services.keywords}
+      ogImage="/images/perfil.jpeg"
+      structuredData={structuredData}
+      language={locale}
     >
       {/* Hero Section */}
       <section className="py-24 relative overflow-hidden bg-dark">
