@@ -514,7 +514,7 @@ const HomePage: React.FC = () => {
   const structuredData = getHomePageSchema();
 
   return (
-    <Layout 
+    <Layout
       title={PAGE_META.home.title}
       description={PAGE_META.home.description}
       keywords={PAGE_META.home.keywords}
@@ -523,46 +523,46 @@ const HomePage: React.FC = () => {
       language={locale}
     >
       <div className="bg-neutral-900 text-white">
-        {/* Botón flotante Calendly CTA */}
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-8 right-8 z-50 bg-accent text-white font-bold px-6 py-3 rounded-full shadow-lg hover:bg-accent/90 transition-colors flex items-center gap-2 animate-bounce"
-          style={{ boxShadow: '0 8px 32px 0 rgba(0,184,217,0.25)' }}
-        >
-          <i className="fas fa-calendar-alt text-lg"></i>
-          {locale === 'es' ? 'Agendar cita' : 'Book a meeting'}
-        </a>
-        <HeroSectionDynamic {...resume.hero} />
-        <ProfileSection {...profile} />
-        <SkillsSectionDynamic {...resume.skills} />
-        <UseCasesSection {...useCases} />
-        <ExperienceSectionDynamic {...resume.experience} />
-        <EducationSection {...resume.education} />
-        {recommendations && recommendations.length > 0 && recommendations[0] && (
-          <RecommendationsSection 
-            title={locale === 'es' ? 'Artículos de AI Engineering' : 'AI Engineering Articles'}
-            items={recommendations[0].items || []} 
-          />
-        )}
-        <ContactSection 
-          title={locale === 'es' ? 'Contacto' : 'Contact'}
-          subtitle={locale === 'es' ? '¿Interesado en colaborar? Estoy disponible para proyectos de consultoría en IA, desarrollo de agentes inteligentes y análisis de datos avanzados.' : 'Interested in collaborating? I am available for consulting projects in AI, intelligent agent development, and advanced data analysis.'}
-          email="andeshebe96@gmail.com"
-          socialLinks={[
-            {
-              platform: "GitHub",
-              url: "https://github.com/javierherrera1996",
-              icon: "fab fa-github"
-            },
-            {
-              platform: "LinkedIn",
-              url: "https://www.linkedin.com/in/javierherrerab",
-              icon: "fab fa-linkedin"
-            }
-          ]}
+      {/* Botón flotante Calendly CTA */}
+      <a
+        href={CALENDLY_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-8 right-8 z-50 bg-accent text-white font-bold px-6 py-3 rounded-full shadow-lg hover:bg-accent/90 transition-colors flex items-center gap-2 animate-bounce"
+        style={{ boxShadow: '0 8px 32px 0 rgba(0,184,217,0.25)' }}
+      >
+        <i className="fas fa-calendar-alt text-lg"></i>
+        {locale === 'es' ? 'Agendar cita' : 'Book a meeting'}
+      </a>
+      <HeroSectionDynamic {...resume.hero} />
+      <ProfileSection {...profile} />
+      <SkillsSectionDynamic {...resume.skills} />
+      <UseCasesSection {...useCases} />
+      <ExperienceSectionDynamic {...resume.experience} />
+      <EducationSection {...resume.education} />
+      {recommendations && recommendations.length > 0 && recommendations[0] && (
+        <RecommendationsSection 
+          title={locale === 'es' ? 'Artículos de AI Engineering' : 'AI Engineering Articles'}
+          items={recommendations[0].items || []} 
         />
+      )}
+      <ContactSection 
+        title={locale === 'es' ? 'Contacto' : 'Contact'}
+        subtitle={locale === 'es' ? '¿Interesado en colaborar? Estoy disponible para proyectos de consultoría en IA, desarrollo de agentes inteligentes y análisis de datos avanzados.' : 'Interested in collaborating? I am available for consulting projects in AI, intelligent agent development, and advanced data analysis.'}
+        email="andeshebe96@gmail.com"
+        socialLinks={[
+          {
+            platform: "GitHub",
+            url: "https://github.com/javierherrera1996",
+            icon: "fab fa-github"
+          },
+          {
+            platform: "LinkedIn",
+            url: "https://www.linkedin.com/in/javierherrerab",
+            icon: "fab fa-linkedin"
+          }
+        ]}
+      />
       </div>
     </Layout>
   );

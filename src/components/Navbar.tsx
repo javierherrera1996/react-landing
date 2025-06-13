@@ -27,6 +27,7 @@ const Navbar: React.FC = () => {
     { name: t('usecases'), path: '/#use-cases', icon: 'fas fa-lightbulb' },
     { name: t('experience'), path: '/#experience', icon: 'fas fa-briefcase' },
     { name: t('education'), path: '/#education', icon: 'fas fa-graduation-cap' },
+    { name: 'Academia', path: '/academia', icon: 'fas fa-chalkboard-teacher' },
     { name: t('contact'), path: '/#contact-section', icon: 'fas fa-envelope' },
   ];
 

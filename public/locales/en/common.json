@@ -1,0 +1,34 @@
+{
+  "menu": {
+    "home": "Home",
+    "skills": "Skills",
+    "usecases": "Use Cases",
+    "experience": "Experience",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "nav": {
+    "about": "About",
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Transforming Data into Intelligent Solutions",
+    "description1": "As a Data Scientist and AI Specialist, I help companies transform their data into intelligent solutions that drive growth and innovation.",
+    "description2": "Specialized in Natural Language Processing and Conversational AI, I develop systems that improve customer experience and optimize business processes.",
+    "buttons": {
+      "download": "Download CV",
+      "contact": "Contact"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "location": "Location",
+    "age": "Age",
+    "nationality": "Nationality",
+    "interests": "Interests",
+    "study": "Study",
+    "employment": "Employment"
+  }
+} 
