@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
@@ -17,7 +17,7 @@ const ParticleBackground = dynamic(() => import('./ParticleBackground'), {
 });
 
 interface HeroSectionProps {
-  headline: string;
+  headline: ReactNode;
   subheadline: string;
   ctaText: string;
   ctaLink: string;
