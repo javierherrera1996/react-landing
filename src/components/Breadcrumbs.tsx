@@ -99,8 +99,10 @@ const generateBreadcrumbsFromPath = (path: string): BreadcrumbItem[] => {
   ];
   
   // Si estamos en la página de inicio, no agregar más elementos
-  if (path === '/') {
-    breadcrumbs[0].isCurrentPage = true;
+  if (path === '/' && breadcrumbs.length > 0) {
+    if (breadcrumbs[0]) {
+      breadcrumbs[0].isCurrentPage = true;
+    }
     return breadcrumbs;
   }
   
@@ -111,6 +113,7 @@ const generateBreadcrumbsFromPath = (path: string): BreadcrumbItem[] => {
   let currentPath = '';
   for (let i = 0; i < segments.length; i++) {
     const segment = segments[i];
+    if (!segment) continue;
     currentPath += `/${segment}`;
     
     // Convertir el segmento a un formato más legible
